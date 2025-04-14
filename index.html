@@ -96,5 +96,29 @@
   <footer>
     &copy; All rights reserved. The Copchik is watching 👁
   </footer>
+   <img id="torch" src="https://i.imgur.com/8YV4e9f.png" alt="Torch">
+
+  <style>
+    #torch {
+      position: absolute;
+      width: 64px;
+      height: 64px;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+    }
+
+    body {
+      cursor: none; /* Скрываем курсор */
+    }
+  </style>
+
+  <script>
+    const torch = document.getElementById('torch');
+    document.addEventListener('mousemove', (e) => {
+      torch.style.left = `${e.clientX}px`;
+      torch.style.top = `${e.clientY}px`;
+    });
+  </script>
 </body>
 </html>

@@ -4,17 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Raven</title>
-  <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;700&display=swap" rel="stylesheet" />
+  
+  <!-- Шрифт Triodion -->
   <style>
     @font-face {
       font-family: 'Triodion';
       src: url('https://ooupss.github.io/The-Raven/files/Triodion-Regular.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
     }
 
     body {
       margin: 0;
-      font-family: 'Triodion', serif;
-      background-color: #0e0e0e;
+      font-family: 'Triodion', 'Spectral', serif;
+      background-color: #000;
       color: #e0e0e0;
       cursor: none;
     }
@@ -23,6 +26,8 @@
       text-align: center;
       padding: 2rem 1rem;
       background-color: #1a1a1a;
+      position: relative;
+      z-index: 2;
     }
 
     h1 {
@@ -47,6 +52,8 @@
       max-width: 960px;
       margin: 2rem auto;
       padding: 0 1rem;
+      position: relative;
+      z-index: 2;
     }
 
     h2 {
@@ -77,40 +84,44 @@
       font-size: 0.9rem;
       background-color: #1a1a1a;
       color: #777;
+      position: relative;
+      z-index: 2;
     }
 
+    /* Факел-курсор */
     #torch {
-      position: absolute;
+      position: fixed;
       width: 64px;
-      height: 64px;
+      height: 128px;
       pointer-events: none;
       transform: translate(-50%, -50%);
-      z-index: 9999;
+      z-index: 999;
     }
 
-    #light-mask {
+    /* Свет */
+    #light {
       position: fixed;
       top: 0;
       left: 0;
-      pointer-events: none;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle 120px at 50% 50%, rgba(255,255,255,0.1), rgba(0,0,0,0.95));
-      mix-blend-mode: lighten;
-      z-index: 10;
+      pointer-events: none;
+      z-index: 1;
     }
   </style>
 </head>
 <body>
-  <div id="light-mask"></div>
+
+  <div id="light"></div>
+  <img id="torch" src="https://ooupss.github.io/The-Raven/files/torch1.png" alt="Torch" />
 
   <header>
     <h1>The Raven</h1>
     <p class="tagline">"В темноте прошлого прячется то, что не должно было быть найдено."</p>
     <div class="badges">
-      <img src="https://img.shields.io/badge/status-in_development-orange" alt="status">
-      <img src="https://img.shields.io/badge/license-CC_BY--NC_4.0-blue" alt="license">
-      <img src="https://img.shields.io/badge/engine-Ren%27Py-green" alt="engine">
+      <img src="https://img.shields.io/badge/status-in_development-orange" alt="status" />
+      <img src="https://img.shields.io/badge/license-CC_BY--NC_4.0-blue" alt="license" />
+      <img src="https://img.shields.io/badge/engine-Ren%27Py-green" alt="engine" />
     </div>
   </header>
 
@@ -136,17 +147,22 @@
     &copy; All rights reserved. The Copchik is watching 👁
   </footer>
 
-  <img id="torch" src="https://ooupss.github.io/The-Raven/files/torch.png" alt="Torch" />
-
   <script>
     const torch = document.getElementById('torch');
-    const light = document.getElementById('light-mask');
+    const light = document.getElementById('light');
 
     document.addEventListener('mousemove', (e) => {
       torch.style.left = `${e.clientX}px`;
       torch.style.top = `${e.clientY}px`;
-      light.style.background = `radial-gradient(circle 140px at ${e.clientX}px ${e.clientY}px, rgba(255,255,255,0.1), rgba(0,0,0,0.95))`;
+
+      light.style.background = `
+        radial-gradient(
+          circle 180px at ${e.clientX}px ${e.clientY}px,
+          rgba(255, 140, 0, 0.25),
+          rgba(0, 0, 0, 0.98)
+        )`;
     });
   </script>
+
 </body>
 </html>

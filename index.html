@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Raven</title>
 
-  <!-- Подключение шрифта -->
+  <!-- Шрифт -->
   <style>
     @font-face {
       font-family: 'Triodion';
@@ -22,11 +22,12 @@
       overflow-x: hidden;
     }
 
-    /* Видео-заставка */
-    #intro-video-container {
+    /* Intro */
+    #intro-container {
       position: fixed;
-      inset: 0;
-      background: black;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background-color: black;
       z-index: 9999;
     }
 
@@ -36,7 +37,23 @@
       object-fit: cover;
     }
 
-    /* Свет */
+    #start-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #f0e6d2;
+      font-size: 2rem;
+      font-family: 'Triodion', serif;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 1rem 2rem;
+      cursor: pointer;
+      z-index: 10000;
+      border: 2px solid #f0e6d2;
+      border-radius: 8px;
+    }
+
+    /* Свет от факела */
     .spotlight {
       position: fixed;
       top: 0;
@@ -45,12 +62,12 @@
       height: 100vh;
       pointer-events: none;
       background: radial-gradient(
-        circle 100px at var(--x, 50%) var(--y, 50%),
-        rgba(255, 160, 50, 0.3) 0%,
-        rgba(0, 0, 0, 0.92) 85%,
+        circle 90px at var(--x, 50%) var(--y, 50%),
+        rgba(255, 160, 50, 0.35) 0%,
+        rgba(0, 0, 0, 0.92) 80%,
         black 100%
       );
-      z-index: 1;
+      z-index: 2;
     }
 
     /* Факел */
@@ -60,19 +77,16 @@
       left: 0;
       width: 48px;
       transform: translate(-50%, -50%);
-      z-index: 999;
+      z-index: 3;
       pointer-events: none;
-    }
-
-    header, section, footer {
-      position: relative;
-      z-index: 2;
     }
 
     header {
       text-align: center;
       padding: 2rem 1rem;
       background-color: #1a1a1a;
+      position: relative;
+      z-index: 4;
     }
 
     h1 {
@@ -97,6 +111,8 @@
       max-width: 960px;
       margin: 2rem auto;
       padding: 0 1rem;
+      position: relative;
+      z-index: 4;
     }
 
     h2 {
@@ -127,29 +143,32 @@
       font-size: 0.9rem;
       background-color: #1a1a1a;
       color: #777;
+      position: relative;
+      z-index: 4;
     }
   </style>
 </head>
 <body>
 
-  <!-- 🔥 Видео-заставка -->
-  <div id="intro-video-container">
-    <video id="intro-video" autoplay muted playsinline>
+  <!-- Видео интро -->
+  <div id="intro-container">
+    <video id="intro-video" playsinline>
       <source src="https://ooupss.github.io/The-Raven/files/Welcome%20to%20The%20Raven.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
+    <div id="start-btn">Нажмите, чтобы войти</div>
   </div>
 
-  <!-- 🌕 Свет -->
+  <!-- Свет -->
   <div class="spotlight" id="light"></div>
 
-  <!-- 🕯️ Факел -->
+  <!-- Факел -->
   <img id="torch" src="https://ooupss.github.io/The-Raven/files/torch.png" alt="Torch" />
 
-  <!-- 💬 Контент -->
+  <!-- Контент -->
   <header>
     <h1>The Raven</h1>
-    <p class="tagline">"Все, кто входили — оставляли часть себя."</p>
+    <p class="tagline">"В темноте прошлого прячется то, что не должно было быть найдено."</p>
     <div class="badges">
       <img src="https://img.shields.io/badge/status-in_development-orange" alt="status">
       <img src="https://img.shields.io/badge/license-CC_BY--NC_4.0-blue" alt="license">
@@ -161,8 +180,7 @@
     <h2>О проекте</h2>
     <p>
       303-й год Эры Исчезновения Магии. Группа наёмников отправляется на задание,
-      не подозревая, что пробудит древнюю силу, погребённую под землёй. В это же
-      время, в далёкой деревне, младенец спит, не зная, что его судьба связана с тьмой.
+      не подозревая, что пробудит древнюю силу, погребённую под землёй...
     </p>
   </section>
 
@@ -179,23 +197,28 @@
     &copy; All rights reserved. The Copchik is watching 👁
   </footer>
 
-  <!-- 🔧 Скрипты -->
+  <!-- Скрипты -->
   <script>
     const spotlight = document.getElementById('light');
     const torch = document.getElementById('torch');
+    const video = document.getElementById('intro-video');
+    const btn = document.getElementById('start-btn');
+    const container = document.getElementById('intro-container');
 
     document.addEventListener('mousemove', (e) => {
       const x = e.clientX;
       const y = e.clientY;
       spotlight.style.setProperty('--x', `${x}px`);
       spotlight.style.setProperty('--y', `${y}px`);
-
       torch.style.left = `${x}px`;
       torch.style.top = `${y}px`;
     });
 
-    const video = document.getElementById('intro-video');
-    const container = document.getElementById('intro-video-container');
+    btn.addEventListener('click', () => {
+      video.volume = 1;
+      video.play();
+      btn.style.display = 'none';
+    });
 
     video.addEventListener('ended', () => {
       container.style.display = 'none';

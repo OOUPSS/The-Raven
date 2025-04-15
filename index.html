@@ -18,36 +18,41 @@
       background-color: #000;
       color: #e0e0e0;
       cursor: none;
-      position: relative;
       overflow-x: hidden;
     }
 
-    /* Слой света — ниже текста */
+    /* Свет — под текстом */
     .spotlight {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  background: radial-gradient(
-    circle 120px at var(--x, 50%) var(--y, 50%),
-    rgba(255, 160, 50, 0.35) 0%,
-    rgba(0, 0, 0, 0.9) 90%,
-    black 100%
-  );
-  z-index: 1;
-}
-
-    /* Факел — поверх всего */
-    #torch {
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
-      width: 64px;
-      transform: translate(-50%, -50%);
-      z-index: 999;
+      width: 100vw;
+      height: 100vh;
       pointer-events: none;
+      background: radial-gradient(
+        circle 100px at var(--x, 50%) var(--y, 50%),
+        rgba(255, 160, 50, 0.3) 0%,
+        rgba(0, 0, 0, 0.95) 90%,
+        #000 100%
+      );
+      z-index: 1;
+    }
+
+    /* Контейнер курсора */
+    #cursor-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    #torch {
+      width: 48px;
+      height: 48px;
+      transform: translate(-50%, -50%);
+      position: absolute;
+      z-index: 2;
     }
 
     header {
@@ -122,8 +127,10 @@
   <!-- Свет -->
   <div class="spotlight" id="light"></div>
 
-  <!-- Факел -->
-  <img id="torch" src="https://ooupss.github.io/The-Raven/files/torch.png" alt="Torch" />
+  <!-- Контейнер с факелом -->
+  <div id="cursor-container">
+    <img id="torch" src="https://ooupss.github.io/The-Raven/files/torch.png" alt="Torch">
+  </div>
 
   <!-- Контент -->
   <header>
@@ -161,16 +168,15 @@
   <!-- Скрипт -->
   <script>
     const spotlight = document.getElementById('light');
-    const torch = document.getElementById('torch');
+    const container = document.getElementById('cursor-container');
 
     document.addEventListener('mousemove', (e) => {
       const x = e.clientX;
       const y = e.clientY;
       spotlight.style.setProperty('--x', `${x}px`);
       spotlight.style.setProperty('--y', `${y}px`);
-
-      torch.style.left = `${x}px`;
-      torch.style.top = `${y}px`;
+      container.style.left = `${x}px`;
+      container.style.top = `${y}px`;
     });
   </script>
 

@@ -12,7 +12,6 @@
       src: url('https://ooupss.github.io/The-Raven/files/Triodion-Regular.ttf') format('truetype');
     }
 
-    /* Общие стили для всей страницы */
     body {
       margin: 0;
       font-family: 'Triodion', serif;
@@ -20,9 +19,10 @@
       color: #e0e0e0;
       position: relative;
       overflow-x: hidden;
+      cursor: none; /* Курсор скрыт на всей странице */
     }
 
-    /* Видео-интро */
+    /* Видео интро */
     #intro-container {
       position: fixed;
       top: 0; left: 0;
@@ -47,7 +47,7 @@
       font-family: 'Triodion', serif;
       background: rgba(0, 0, 0, 0.5);
       padding: 1rem 2rem;
-      cursor: pointer; /* Курсор показывается только на кнопке */
+      cursor: pointer; /* Стандартный курсор только на кнопке */
       z-index: 10000;
       border: 2px solid #f0e6d2;
       border-radius: 8px;
@@ -92,7 +92,7 @@
         rgba(0, 0, 0, 0.92) 80%,
         black 100%
       );
-      z-index: 2;
+      z-index: 2; /* Свет от факела выше контента, но ниже самого факела */
     }
 
     /* Факел */
@@ -102,7 +102,7 @@
       left: 0;
       width: 48px;
       transform: translate(-50%, -50%);
-      z-index: 3;
+      z-index: 3; /* Факел выше всего */
       pointer-events: none;
     }
 

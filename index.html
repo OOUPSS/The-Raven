@@ -25,16 +25,19 @@
     /* Свет — сразу под факелом */
     .spotlight {
       position: absolute;
-      width: 160px;
-      height: 160px;
+      width: 200px;
+      height: 200px;
       pointer-events: none;
+      border-radius: 50%;
       background: radial-gradient(
-        circle at center,
-        rgba(255, 140, 30, 0.3) 0%,
-        rgba(0, 0, 0, 0.85) 90%
+        circle,
+        rgba(255, 150, 30, 0.35) 0%,
+        rgba(255, 80, 0, 0.1) 40%,
+        rgba(0, 0, 0, 0) 100%
       );
       transform: translate(-50%, -50%);
       z-index: 998;
+      mix-blend-mode: screen;
     }
 
     /* Факел — поверх всего */

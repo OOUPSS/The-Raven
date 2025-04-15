@@ -19,7 +19,7 @@
       color: #e0e0e0;
       position: relative;
       overflow-x: hidden;
-      cursor: none; /* Курсор скрыт на всей странице */
+      cursor: none; /* Скрываем курсор на всей странице */
     }
 
     /* Видео интро */
@@ -28,7 +28,7 @@
       top: 0; left: 0;
       width: 100vw; height: 100vh;
       background-color: black;
-      z-index: 9999;
+      z-index: 9999; /* Высокий z-index для интро */
     }
 
     #intro-video {
@@ -48,7 +48,7 @@
       background: rgba(0, 0, 0, 0.5);
       padding: 1rem 2rem;
       cursor: pointer; /* Стандартный курсор только на кнопке */
-      z-index: 10000;
+      z-index: 10000; /* Высокий z-index для кнопки */
       border: 2px solid #f0e6d2;
       border-radius: 8px;
       transition: background-color 0.3s;
@@ -92,7 +92,7 @@
         rgba(0, 0, 0, 0.92) 80%,
         black 100%
       );
-      z-index: 2; /* Свет от факела выше контента, но ниже самого факела */
+      z-index: 10000; /* Помещаем свет факела выше всего */
     }
 
     /* Факел */
@@ -102,7 +102,7 @@
       left: 0;
       width: 48px;
       transform: translate(-50%, -50%);
-      z-index: 3; /* Факел выше всего */
+      z-index: 10001; /* Самый высокий z-index для факела */
       pointer-events: none;
     }
 

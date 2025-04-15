@@ -17,12 +17,12 @@
       font-family: 'Triodion', serif;
       background-color: #000;
       color: #e0e0e0;
-      cursor: none;
+      cursor: none; /* Скрываем курсор на всей странице */
       position: relative;
       overflow-x: hidden;
     }
 
-    /* Intro */
+    /* Видео интро */
     #intro-container {
       position: fixed;
       top: 0; left: 0;
@@ -47,10 +47,29 @@
       font-family: 'Triodion', serif;
       background: rgba(0, 0, 0, 0.5);
       padding: 1rem 2rem;
-      cursor: pointer;
+      cursor: pointer; /* Курсор показывается только на кнопке */
       z-index: 10000;
       border: 2px solid #f0e6d2;
       border-radius: 8px;
+    }
+
+    /* Кнопка смены языка */
+    .lang-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #222;
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer; /* Курсор показывается на кнопке языка */
+      z-index: 10000;
+      transition: background-color 0.3s;
+    }
+
+    .lang-toggle:hover {
+      background-color: #444;
     }
 
     /* Свет от факела */
@@ -81,6 +100,7 @@
       pointer-events: none;
     }
 
+    /* Контент */
     header {
       text-align: center;
       padding: 2rem 1rem;
@@ -156,7 +176,7 @@
       <source src="https://ooupss.github.io/The-Raven/files/Welcome%20to%20The%20Raven.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
-    <div id="start-btn">Click to Enter</div>
+    <div id="start-btn" data-lang="welcome">Click to Enter</div>
   </div>
 
   <!-- Свет -->
@@ -167,8 +187,8 @@
 
   <!-- Контент -->
   <header>
-    <h1>The Raven</h1>
-    <p class="tagline">"В темноте прошлого прячется то, что не должно было быть найдено."</p>
+    <h1 data-lang="title">The Raven</h1>
+    <p class="tagline" data-lang="tagline">"In the darkness of the past lies something that should have never been found."</p>
     <div class="badges">
       <img src="https://img.shields.io/badge/status-in_development-orange" alt="status">
       <img src="https://img.shields.io/badge/license-CC_BY--NC_4.0-blue" alt="license">
@@ -177,15 +197,15 @@
   </header>
 
   <section>
-    <h2>О проекте</h2>
-    <p>
+    <h2 data-lang="about-title">About the Project</h2>
+    <p data-lang="about-text">
       303-й год Эры Исчезновения Магии. Группа наёмников отправляется на задание,
       не подозревая, что пробудит древнюю силу, погребённую под землёй...
     </p>
   </section>
 
   <section>
-    <h2>Скриншоты</h2>
+    <h2>Screenshots</h2>
     <div class="screenshots">
       <div>Scene Placeholder 1</div>
       <div>Scene Placeholder 2</div>
@@ -197,6 +217,9 @@
     &copy; All rights reserved. The Copchik is watching 👁
   </footer>
 
+  <!-- Переключатель языка -->
+  <div class="lang-toggle" onclick="toggleLanguage()">🌐 EN</div>
+
   <!-- Скрипты -->
   <script>
     const spotlight = document.getElementById('light');
@@ -204,6 +227,26 @@
     const video = document.getElementById('intro-video');
     const btn = document.getElementById('start-btn');
     const container = document.getElementById('intro-container');
+    const langToggle = document.querySelector('.lang-toggle');
+
+    let currentLang = 'en';
+
+    const translations = {
+      en: {
+        welcome: "Click to Enter",
+        tagline: '"In the darkness of the past lies something that should have never been found."',
+        title: "The Raven",
+        aboutTitle: "About the Project",
+        aboutText: "Year 303 of the Era of Magic's Disappearance. A group of mercenaries embarks on a mission, unaware they will awaken an ancient force buried beneath the earth..."
+      },
+      ru: {
+        welcome: "Нажмите, чтобы войти",
+        tagline: '"В темноте прошлого прячется то, что не должно было быть найдено."',
+        title: "Ворон",
+        aboutTitle: "О проекте",
+        aboutText: "303-й год Эры Исчезновения Магии. Группа наёмников отправляется на задание, не подозревая, что пробудит древнюю силу, погребённую под землёй..."
+      }
+    };
 
     document.addEventListener('mousemove', (e) => {
       const x = e.clientX;
@@ -223,6 +266,17 @@
     video.addEventListener('ended', () => {
       container.style.display = 'none';
     });
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'en' ? 'ru' : 'en';
+      langToggle.textContent = currentLang === 'en' ? '🌐 EN' : '🌐 RU';
+
+      document.querySelector('[data-lang="title"]').textContent = translations[currentLang].title;
+      document.querySelector('[data-lang="tagline"]').textContent = translations[currentLang].tagline;
+      document.querySelector('[data-lang="welcome"]').textContent = translations[currentLang].welcome;
+      document.querySelector('[data-lang="about-title"]').textContent = translations[currentLang].aboutTitle;
+      document.querySelector('[data-lang="about-text"]').textContent = translations[currentLang].aboutText;
+    }
   </script>
 
 </body>

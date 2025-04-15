@@ -5,82 +5,160 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Raven</title>
 
-  <!-- Подключаем кастомный шрифт -->
+  <!-- Шрифт -->
   <style>
     @font-face {
       font-family: 'Triodion';
       src: url('https://ooupss.github.io/The-Raven/files/Triodion-Regular.ttf') format('truetype');
     }
 
-    html, body {
+    body {
       margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      background: #000;
       font-family: 'Triodion', serif;
-      overflow: hidden;
+      background-color: #000;
+      color: #e0e0e0;
       cursor: none;
+      position: relative;
+      overflow-x: hidden;
     }
 
+    /* Слой света — ниже текста */
     .spotlight {
       position: fixed;
+      top: 0;
+      left: 0;
       width: 100vw;
       height: 100vh;
       pointer-events: none;
       background: radial-gradient(
         circle at var(--x, 50%) var(--y, 50%),
-        rgba(255, 140, 50, 0.25) 0%,
-        rgba(0, 0, 0, 0.95) 20%,
-        black 60%
+        rgba(255, 140, 50, 0.3) 0%,
+        rgba(0, 0, 0, 0.96) 20%,
+        black 70%
       );
       z-index: 1;
-      transition: background 0.05s ease;
     }
 
+    /* Факел — поверх всего */
     #torch {
       position: absolute;
       top: 0;
       left: 0;
-      width: 96px;
+      width: 64px;
       transform: translate(-50%, -50%);
-      z-index: 2;
+      z-index: 999;
       pointer-events: none;
     }
 
     header {
-      position: relative;
-      z-index: 3;
       text-align: center;
-      color: #fff;
-      padding-top: 3rem;
+      padding: 2rem 1rem;
+      background-color: #1a1a1a;
+      position: relative;
+      z-index: 2;
     }
 
     h1 {
       font-size: 2.5rem;
-      margin-bottom: 0.5rem;
+      margin: 0.2rem 0;
     }
 
     p.tagline {
       font-style: italic;
-      color: #ccc;
+      color: #a0a0a0;
+    }
+
+    .badges {
+      margin: 1rem 0;
+    }
+
+    .badges img {
+      margin: 0 0.3rem;
+    }
+
+    section {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    h2 {
+      border-bottom: 1px solid #444;
+      padding-bottom: 0.5rem;
+    }
+
+    .screenshots {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .screenshots div {
+      background-color: #1e1e1e;
+      height: 135px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #888;
+      border: 1px dashed #444;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      background-color: #1a1a1a;
+      color: #777;
+      position: relative;
+      z-index: 2;
     }
   </style>
 </head>
 <body>
 
-  <!-- Факел (курсор) -->
-  <img id="torch" src="https://ooupss.github.io/The-Raven/files/torch.png" alt="Torch" />
-
-  <!-- Свет вокруг курсора -->
+  <!-- Свет -->
   <div class="spotlight" id="light"></div>
 
-  <!-- Текст как пример -->
+  <!-- Факел -->
+  <img id="torch" src="https://ooupss.github.io/The-Raven/files/torch.png" alt="Torch" />
+
+  <!-- Контент -->
   <header>
     <h1>The Raven</h1>
     <p class="tagline">"В темноте прошлого прячется то, что не должно было быть найдено."</p>
+    <div class="badges">
+      <img src="https://img.shields.io/badge/status-in_development-orange" alt="status">
+      <img src="https://img.shields.io/badge/license-CC_BY--NC_4.0-blue" alt="license">
+      <img src="https://img.shields.io/badge/engine-Ren%27Py-green" alt="engine">
+    </div>
   </header>
 
+  <section>
+    <h2>О проекте</h2>
+    <p>
+      303-й год Эры Исчезновения Магии. Группа наёмников отправляется на задание,
+      не подозревая, что пробудит древнюю силу, погребённую под землёй. В это же
+      время, в далёкой деревне, младенец спит, не зная, что его судьба связана с тьмой.
+    </p>
+  </section>
+
+  <section>
+    <h2>Скриншоты</h2>
+    <div class="screenshots">
+      <div>Scene Placeholder 1</div>
+      <div>Scene Placeholder 2</div>
+      <div>Scene Placeholder 3</div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; All rights reserved. The Copchik is watching 👁
+  </footer>
+
+  <!-- Скрипт -->
   <script>
     const spotlight = document.getElementById('light');
     const torch = document.getElementById('torch');
@@ -88,7 +166,6 @@
     document.addEventListener('mousemove', (e) => {
       const x = e.clientX;
       const y = e.clientY;
-
       spotlight.style.setProperty('--x', `${x}px`);
       spotlight.style.setProperty('--y', `${y}px`);
 
@@ -96,5 +173,6 @@
       torch.style.top = `${y}px`;
     });
   </script>
+
 </body>
 </html>

@@ -17,7 +17,7 @@
       font-family: 'Triodion', serif;
       background-color: #000;
       color: #e0e0e0;
-      cursor: default; /* Курсор виден на всей странице */
+      cursor: none; /* Скрываем обычный курсор */
       position: relative;
       overflow-x: hidden;
     }
@@ -47,10 +47,16 @@
       font-family: 'Triodion', serif;
       background: rgba(0, 0, 0, 0.5);
       padding: 1rem 2rem;
-      cursor: pointer; /* Стандартный курсор */
+      cursor: pointer; /* Стандартный курсор только на кнопке */
       z-index: 10000;
       border: 2px solid #f0e6d2;
       border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+
+    /* Эффект при наведении на кнопку "Click to Enter" */
+    #start-btn:hover {
+      background-color: rgba(0, 0, 0, 0.8);
     }
 
     /* Кнопка смены языка */

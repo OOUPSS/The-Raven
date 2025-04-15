@@ -24,20 +24,20 @@
 
     /* Слой света — ниже текста */
     .spotlight {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-      background: radial-gradient(
-       circle at var(--x, 50%) var(--y, 50%),
-       rgba(255, 160, 50, 0.35) 0%,
-       rgba(0, 0, 0, 0.9) 10%,
-       black 30%
-      );
-      z-index: 1;
-    }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  background: radial-gradient(
+    circle 120px at var(--x, 50%) var(--y, 50%),
+    rgba(255, 160, 50, 0.35) 0%,
+    rgba(0, 0, 0, 0.9) 90%,
+    black 100%
+  );
+  z-index: 1;
+}
 
     /* Факел — поверх всего */
     #torch {

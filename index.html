@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Raven</title>
   
-  <!-- Шрифт Triodion -->
+  <!-- Подключение кастомного шрифта -->
   <style>
     @font-face {
       font-family: 'Triodion';
@@ -14,104 +14,82 @@
       font-style: normal;
     }
 
-    body {
+    html, body {
       margin: 0;
+      padding: 0;
+      height: 100%;
       font-family: 'Triodion', 'Spectral', serif;
       background-color: #000;
       color: #e0e0e0;
       cursor: none;
+      overflow: hidden;
     }
 
-    header {
-      text-align: center;
-      padding: 2rem 1rem;
-      background-color: #1a1a1a;
-      position: relative;
-      z-index: 2;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      margin: 0.2rem 0;
-    }
-
-    p.tagline {
-      font-style: italic;
-      color: #a0a0a0;
-    }
-
-    .badges {
-      margin: 1rem 0;
-    }
-
-    .badges img {
-      margin: 0 0.3rem;
-    }
-
-    section {
-      max-width: 960px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-      position: relative;
-      z-index: 2;
-    }
-
-    h2 {
-      border-bottom: 1px solid #444;
-      padding-bottom: 0.5rem;
-    }
-
-    .screenshots {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .screenshots div {
-      background-color: #1e1e1e;
-      height: 135px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #888;
-      border: 1px dashed #444;
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      background-color: #1a1a1a;
-      color: #777;
-      position: relative;
-      z-index: 2;
-    }
-
-    /* Факел-курсор */
-    #torch {
-      position: fixed;
-      width: 64px;
-      height: 128px;
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      z-index: 999;
-    }
-
-    /* Свет */
     #light {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
+      width: 100vw;
+      height: 100vh;
       pointer-events: none;
       z-index: 1;
+      background: radial-gradient(circle 100px at center, rgba(255, 140, 0, 0.2), rgba(0, 0, 0, 1));
+      transition: background 0.05s ease-out;
+    }
+
+    #torch {
+      position: fixed;
+      width: 48px;
+      height: auto;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+    }
+
+    header, section, footer {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin: 0.5rem 0;
+    }
+
+    .tagline {
+      font-style: italic;
+      color: #aaa;
+    }
+
+    .screenshots {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .screenshots div {
+      background: #222;
+      border: 1px dashed #444;
+      color: #aaa;
+      width: 200px;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    footer {
+      font-size: 0.9rem;
+      color: #777;
     }
   </style>
 </head>
 <body>
 
+  <!-- Свет и факел -->
   <div id="light"></div>
   <img id="torch" src="https://ooupss.github.io/The-Raven/files/torch1.png" alt="Torch" />
 
@@ -129,8 +107,7 @@
     <h2>О проекте</h2>
     <p>
       303-й год Эры Исчезновения Магии. Группа наёмников отправляется на задание,
-      не подозревая, что пробудит древнюю силу, погребённую под землёй. В это же
-      время, в далёкой деревне, младенец спит, не зная, что его судьба связана с тьмой.
+      не подозревая, что пробудит древнюю силу, погребённую под землёй.
     </p>
   </section>
 
@@ -147,6 +124,7 @@
     &copy; All rights reserved. The Copchik is watching 👁
   </footer>
 
+  <!-- Скрипт управления -->
   <script>
     const torch = document.getElementById('torch');
     const light = document.getElementById('light');
@@ -157,8 +135,8 @@
 
       light.style.background = `
         radial-gradient(
-          circle 180px at ${e.clientX}px ${e.clientY}px,
-          rgba(255, 140, 0, 0.25),
+          circle 80px at ${e.clientX}px ${e.clientY}px,
+          rgba(255, 160, 40, 0.25),
           rgba(0, 0, 0, 0.98)
         )`;
     });

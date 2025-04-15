@@ -20,7 +20,7 @@
       color: #e0e0e0;
       position: relative;
       overflow-x: hidden;
-      cursor: none; /* Курсор скрыт на всей странице */
+      cursor: default; /* Стандартный курсор на старте */
     }
 
     /* Видео интро */
@@ -60,26 +60,7 @@
       background-color: rgba(0, 0, 0, 0.8);
     }
 
-    /* Кнопка смены языка */
-    .lang-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background-color: #222;
-      color: #fff;
-      padding: 8px 12px;
-      border-radius: 8px;
-      font-size: 14px;
-      cursor: pointer; /* Стандартный курсор */
-      z-index: 10000;
-      transition: background-color 0.3s;
-    }
-
-    .lang-toggle:hover {
-      background-color: #444;
-    }
-
-    /* Свет от факела */
+    /* Свет от факела (для основной страницы) */
     .spotlight {
       position: fixed;
       top: 0;
@@ -93,17 +74,17 @@
         rgba(0, 0, 0, 0.92) 80%,
         black 100%
       );
-      z-index: 10001; /* Помещаем свет факела выше всего */
+      z-index: 1001; /* Помещаем свет факела выше всего */
     }
 
-    /* Факел */
+    /* Факел (для основной страницы) */
     #torch {
       position: absolute;
       top: 0;
       left: 0;
       width: 48px;
       transform: translate(-50%, -50%);
-      z-index: 10002; /* Самый высокий z-index для факела */
+      z-index: 1002; /* Самый высокий z-index для факела */
       pointer-events: none;
     }
 
@@ -183,19 +164,19 @@
       <source src="https://ooupss.github.io/The-Raven/files/Welcome%20to%20The%20Raven.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
-    <div id="start-btn" data-lang="welcome">Click to Enter</div>
+    <div id="start-btn">Click to Enter</div>
   </div>
 
-  <!-- Свет -->
-  <div class="spotlight" id="light"></div>
+  <!-- Свет от факела (будет активен только после завершения видео) -->
+  <div class="spotlight" id="light" style="display:none;"></div>
 
-  <!-- Факел -->
-  <img id="torch" src="https://ooupss.github.io/The-Raven/files/torch.png" alt="Torch" />
+  <!-- Факел (будет активен только после завершения видео) -->
+  <img id="torch" src="https://ooupss.github.io/The-Raven/files/torch.png" alt="Torch" style="display:none;" />
 
   <!-- Контент -->
   <header>
-    <h1 data-lang="title">The Raven</h1>
-    <p class="tagline" data-lang="tagline">"In the darkness of the past lies something that should have never been found."</p>
+    <h1>The Raven</h1>
+    <p class="tagline">"In the darkness of the past lies something that should have never been found."</p>
     <div class="badges">
       <img src="https://img.shields.io/badge/status-in_development-orange" alt="status">
       <img src="https://img.shields.io/badge/license-CC_BY--NC_4.0-blue" alt="license">
@@ -204,10 +185,10 @@
   </header>
 
   <section>
-    <h2 data-lang="about-title">About the Project</h2>
-    <p data-lang="about-text">
-      303-й год Эры Исчезновения Магии. Группа наёмников отправляется на задание,
-      не подозревая, что пробудит древнюю силу, погребённую под землёй...
+    <h2>About the Project</h2>
+    <p>
+      Year 303 of the Era of Magic's Disappearance. A group of mercenaries embarks on a mission,
+      unaware they will awaken an ancient force buried beneath the earth...
     </p>
   </section>
 
@@ -224,9 +205,6 @@
     &copy; All rights reserved. The Copchik is watching 👁
   </footer>
 
-  <!-- Переключатель языка -->
-  <div class="lang-toggle" onclick="toggleLanguage()">🌐 EN</div>
-
   <!-- Скрипты -->
   <script>
     const spotlight = document.getElementById('light');
@@ -234,28 +212,14 @@
     const video = document.getElementById('intro-video');
     const btn = document.getElementById('start-btn');
     const container = document.getElementById('intro-container');
-    const langToggle = document.querySelector('.lang-toggle');
 
-    let currentLang = 'en';
-
-    const translations = {
-      en: {
-        welcome: "Click to Enter",
-        tagline: '"In the darkness of the past lies something that should have never been found."',
-        title: "The Raven",
-        aboutTitle: "About the Project",
-        aboutText: "Year 303 of the Era of Magic's Disappearance. A group of mercenaries embarks on a mission, unaware they will awaken an ancient force buried beneath the earth..."
-      },
-      ru: {
-        welcome: "Нажмите, чтобы войти",
-        tagline: '"В темноте прошлого прячется то, что не должно было быть найдено."',
-        title: "Ворон",
-        aboutTitle: "О проекте",
-        aboutText: "303-й год Эры Исчезновения Магии. Группа наёмников отправляется на задание, не подозревая, что пробудит древнюю силу, погребённую под землёй..."
-      }
-    };
+    // Курсор на странице старта
+    document.body.style.cursor = "default";  // На старте курсор обычный
 
     document.addEventListener('mousemove', (e) => {
+      if (video.paused) { // Пока видео не закончилось
+        return;
+      }
       const x = e.clientX;
       const y = e.clientY;
       spotlight.style.setProperty('--x', `${x}px`);
@@ -264,26 +228,20 @@
       torch.style.top = `${y}px`;
     });
 
+    // Кнопка "Click to Enter"
     btn.addEventListener('click', () => {
       video.volume = 1;
       video.play();
       btn.style.display = 'none';
+      spotlight.style.display = 'block';
+      torch.style.display = 'block';
+      document.body.style.cursor = 'none';  // Скрываем обычный курсор после видео
     });
 
+    // Когда видео заканчивается, скрываем заставку
     video.addEventListener('ended', () => {
       container.style.display = 'none';
     });
-
-    function toggleLanguage() {
-      currentLang = currentLang === 'en' ? 'ru' : 'en';
-      langToggle.textContent = currentLang === 'en' ? '🌐 EN' : '🌐 RU';
-
-      document.querySelector('[data-lang="title"]').textContent = translations[currentLang].title;
-      document.querySelector('[data-lang="tagline"]').textContent = translations[currentLang].tagline;
-      document.querySelector('[data-lang="welcome"]').textContent = translations[currentLang].welcome;
-      document.querySelector('[data-lang="about-title"]').textContent = translations[currentLang].aboutTitle;
-      document.querySelector('[data-lang="about-text"]').textContent = translations[currentLang].aboutText;
-    }
   </script>
 
 </body>

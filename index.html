@@ -10,13 +10,13 @@
       font-family: 'Triodion';
       src: url('https://ooupss.github.io/The-Raven/files/Triodion-Regular.ttf') format('truetype');
     }
-    
+
     body {
       margin: 0;
       font-family: 'Triodion', serif;
       background-color: #0e0e0e;
       color: #e0e0e0;
-      cursor: none; /* скрываем системный курсор */
+      cursor: none;
     }
 
     header {
@@ -81,22 +81,36 @@
 
     #torch {
       position: absolute;
-      width: 48px;
-      height: 48px;
+      width: 64px;
+      height: 64px;
       pointer-events: none;
       transform: translate(-50%, -50%);
       z-index: 9999;
     }
+
+    #light-mask {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle 120px at 50% 50%, rgba(255,255,255,0.1), rgba(0,0,0,0.95));
+      mix-blend-mode: lighten;
+      z-index: 10;
+    }
   </style>
 </head>
 <body>
+  <div id="light-mask"></div>
+
   <header>
     <h1>The Raven</h1>
     <p class="tagline">"В темноте прошлого прячется то, что не должно было быть найдено."</p>
     <div class="badges">
-      <img src="https://img.shields.io/badge/status-in_development-orange" alt="status" />
-      <img src="https://img.shields.io/badge/license-CC_BY--NC_4.0-blue" alt="license" />
-      <img src="https://img.shields.io/badge/engine-Ren%27Py-green" alt="engine" />
+      <img src="https://img.shields.io/badge/status-in_development-orange" alt="status">
+      <img src="https://img.shields.io/badge/license-CC_BY--NC_4.0-blue" alt="license">
+      <img src="https://img.shields.io/badge/engine-Ren%27Py-green" alt="engine">
     </div>
   </header>
 
@@ -122,14 +136,16 @@
     &copy; All rights reserved. The Copchik is watching 👁
   </footer>
 
-  <!-- курсор-факел -->
-  <img id="torch" src="https://raw.githubusercontent.com/OOUPSS/The-Raven/main/files/torch.png" alt="Torch" />
+  <img id="torch" src="https://ooupss.github.io/The-Raven/files/torch.png" alt="Torch" />
 
   <script>
     const torch = document.getElementById('torch');
+    const light = document.getElementById('light-mask');
+
     document.addEventListener('mousemove', (e) => {
       torch.style.left = `${e.clientX}px`;
       torch.style.top = `${e.clientY}px`;
+      light.style.background = `radial-gradient(circle 140px at ${e.clientX}px ${e.clientY}px, rgba(255,255,255,0.1), rgba(0,0,0,0.95))`;
     });
   </script>
 </body>

@@ -12,6 +12,7 @@
       src: url('https://ooupss.github.io/The-Raven/files/Triodion-Regular.ttf') format('truetype');
     }
 
+    /* Общие стили для всей страницы */
     body {
       margin: 0;
       font-family: 'Triodion', serif;
@@ -19,7 +20,7 @@
       color: #e0e0e0;
       position: relative;
       overflow-x: hidden;
-      cursor: none; /* Скрываем курсор на всей странице */
+      cursor: none; /* Курсор скрыт на всей странице */
     }
 
     /* Видео интро */
@@ -28,7 +29,7 @@
       top: 0; left: 0;
       width: 100vw; height: 100vh;
       background-color: black;
-      z-index: 9999; /* Высокий z-index для интро */
+      z-index: 9999;
     }
 
     #intro-video {
@@ -48,7 +49,7 @@
       background: rgba(0, 0, 0, 0.5);
       padding: 1rem 2rem;
       cursor: pointer; /* Стандартный курсор только на кнопке */
-      z-index: 10000; /* Высокий z-index для кнопки */
+      z-index: 10000;
       border: 2px solid #f0e6d2;
       border-radius: 8px;
       transition: background-color 0.3s;

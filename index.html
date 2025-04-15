@@ -11,41 +11,51 @@
       font-family: 'Spectral', serif;
       background-color: #0e0e0e;
       color: #e0e0e0;
+      cursor: url('https://raw.githubusercontent.com/OOUPSS/The-Raven/main/files/torch.png') 32 32, auto; /* 👈 курсор */
     }
+
     header {
       text-align: center;
       padding: 2rem 1rem;
       background-color: #1a1a1a;
     }
+
     h1 {
       font-size: 2.5rem;
       margin: 0.2rem 0;
     }
+
     p.tagline {
       font-style: italic;
       color: #a0a0a0;
     }
+
     .badges {
       margin: 1rem 0;
     }
+
     .badges img {
       margin: 0 0.3rem;
     }
+
     section {
       max-width: 960px;
       margin: 2rem auto;
       padding: 0 1rem;
     }
+
     h2 {
       border-bottom: 1px solid #444;
       padding-bottom: 0.5rem;
     }
+
     .screenshots {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 1rem;
       margin-top: 1rem;
     }
+
     .screenshots div {
       background-color: #1e1e1e;
       height: 135px;
@@ -55,6 +65,7 @@
       color: #888;
       border: 1px dashed #444;
     }
+
     footer {
       text-align: center;
       padding: 2rem;
@@ -96,29 +107,5 @@
   <footer>
     &copy; All rights reserved. The Copchik is watching 👁
   </footer>
-   <img id="torch" src="https://i.imgur.com/8YV4e9f.png" alt="Torch">
-
-  <style>
-    #torch {
-      position: absolute;
-      width: 64px;
-      height: 64px;
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      z-index: 9999;
-    }
-
-    body {
-      cursor: none; /* Скрываем курсор */
-    }
-  </style>
-
-  <script>
-    const torch = document.getElementById('torch');
-    document.addEventListener('mousemove', (e) => {
-      torch.style.left = `${e.clientX}px`;
-      torch.style.top = `${e.clientY}px`;
-    });
-  </script>
 </body>
 </html>

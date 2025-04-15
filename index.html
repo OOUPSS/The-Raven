@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Raven</title>
-  <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
       font-family: 'Spectral', serif;
       background-color: #0e0e0e;
       color: #e0e0e0;
-      cursor: url('https://raw.githubusercontent.com/OOUPSS/The-Raven/main/files/torch.png') 32 32, auto; /* 👈 курсор */
+      cursor: none; /* скрываем системный курсор */
     }
 
     header {
@@ -73,6 +73,15 @@
       background-color: #1a1a1a;
       color: #777;
     }
+
+    #torch {
+      position: absolute;
+      width: 64px;
+      height: auto;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+    }
   </style>
 </head>
 <body>
@@ -80,9 +89,9 @@
     <h1>The Raven</h1>
     <p class="tagline">"В темноте прошлого прячется то, что не должно было быть найдено."</p>
     <div class="badges">
-      <img src="https://img.shields.io/badge/status-in_development-orange" alt="status">
-      <img src="https://img.shields.io/badge/license-CC_BY--NC_4.0-blue" alt="license">
-      <img src="https://img.shields.io/badge/engine-Ren%27Py-green" alt="engine">
+      <img src="https://img.shields.io/badge/status-in_development-orange" alt="status" />
+      <img src="https://img.shields.io/badge/license-CC_BY--NC_4.0-blue" alt="license" />
+      <img src="https://img.shields.io/badge/engine-Ren%27Py-green" alt="engine" />
     </div>
   </header>
 
@@ -107,5 +116,16 @@
   <footer>
     &copy; All rights reserved. The Copchik is watching 👁
   </footer>
+
+  <!-- курсор-факел -->
+  <img id="torch" src="https://raw.githubusercontent.com/OOUPSS/The-Raven/main/files/torch1.png" alt="Torch" />
+
+  <script>
+    const torch = document.getElementById('torch');
+    document.addEventListener('mousemove', (e) => {
+      torch.style.left = `${e.clientX}px`;
+      torch.style.top = `${e.clientY}px`;
+    });
+  </script>
 </body>
 </html>

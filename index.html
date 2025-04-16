@@ -16,7 +16,6 @@
       background-color: #000;
       color: #e0e0e0;
       overflow-x: hidden;
-      position: relative;
     }
 
     .hide-cursor { cursor: none; }
@@ -30,15 +29,13 @@
     }
 
     #intro-video {
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       object-fit: cover;
     }
 
     #start-btn {
       position: absolute;
-      top: 50%;
-      left: 50%;
+      top: 50%; left: 50%;
       transform: translate(-50%, -50%);
       color: #f0e6d2;
       font-size: 2rem;
@@ -70,41 +67,38 @@
 
     .lang-toggle:hover { background-color: #444; }
 
-    .cursor-layers {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 2;
-    }
-
     .spotlight {
-      position: absolute;
-      width: 100vw;
-      height: 100vh;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      pointer-events: none;
       background: radial-gradient(
         circle 90px at var(--x, 50%) var(--y, 50%),
         rgba(255, 160, 50, 0.35) 0%,
         rgba(0, 0, 0, 0.92) 80%,
         black 100%
       );
+      z-index: 1;
     }
 
     #torch {
-      position: absolute;
+      position: fixed;
+      top: 0; left: 0;
       width: 48px;
       transform: translate(-50%, -50%);
+      z-index: 10001;
       pointer-events: none;
+    }
+
+    header, section, footer {
+      position: relative;
+      z-index: 2;
     }
 
     header {
       text-align: center;
       padding: 2rem 1rem;
       background-color: #1a1a1a;
-      position: relative;
-      z-index: 4;
     }
 
     h1 {
@@ -129,8 +123,6 @@
       max-width: 960px;
       margin: 2rem auto;
       padding: 0 1rem;
-      position: relative;
-      z-index: 4;
     }
 
     h2 {
@@ -161,14 +153,11 @@
       font-size: 0.9rem;
       background-color: #1a1a1a;
       color: #777;
-      position: relative;
-      z-index: 4;
     }
   </style>
 </head>
 <body>
 
-  <!-- Видео интро -->
   <div id="intro-container">
     <video id="intro-video" playsinline>
       <source src="https://ooupss.github.io/The-Raven/files/Welcome%20to%20The%20Raven.mp4" type="video/mp4">
@@ -176,15 +165,11 @@
     <div id="start-btn" data-lang="welcome">Click to Enter</div>
   </div>
 
-  <!-- Факел и свет -->
-  <div class="cursor-layers">
-    <div class="spotlight" id="light"></div>
-    <img id="torch" src="https://ooupss.github.io/The-Raven/files/torch.png" alt="Torch" />
-  </div>
+  <div class="spotlight" id="light"></div>
+  <img id="torch" src="https://ooupss.github.io/The-Raven/files/torch.png" alt="Torch" />
 
-  <!-- Контент -->
   <header>
-    <h1>The Raven</h1>
+    <h1 data-lang="title">The Raven</h1>
     <p class="tagline" data-lang="tagline">"In the darkness of the past lies something that should have never been found."</p>
     <div class="badges">
       <img src="https://img.shields.io/badge/status-in_development-orange" alt="status">
@@ -214,50 +199,17 @@
     <h2>🛠️ Технологии / Technologies</h2>
     <ul>
       <li>Ren'Py — движок визуальных новелл / visual novel engine</li>
-      <li>CapCut + AI — синематик сцены с озвучкой / cinematics & voiceover</li>
+      <li>CapCut + AI — синематик сцены / cinematics & voiceover</li>
       <li>GitHub Pages — демо и портфолио / (soon) demo & portfolio</li>
     </ul>
   </section>
 
   <section>
-    <h2>🧾 Лицензия / License</h2>
+    <h2>📟 Лицензия / License</h2>
     <p>
       Этот проект распространяется под лицензией <a href="https://creativecommons.org/licenses/by-nc/4.0" target="_blank">Creative Commons Attribution-NonCommercial 4.0 International</a>.<br>
       Вы можете копировать, перерабатывать и распространять материалы в некоммерческих целях, при условии указания авторства.
     </p>
-    <p>
-      This work is licensed under the <a href="https://creativecommons.org/licenses/by-nc/4.0" target="_blank">Creative Commons Attribution-NonCommercial 4.0 International License</a>.<br>
-      You may share and adapt the material for non-commercial purposes, with proper credit.
-    </p>
-  </section>
-
-  <section>
-    <h2>📅 Дорожная карта / Roadmap</h2>
-    <ul>
-      <li>✅ Идея и концепт / Idea & concept</li>
-      <li>✅ Прототип / Prototype</li>
-      <li>🔄 Разработка демо-версии / Demo in progress</li>
-      <li>⏳ Озвучка и катсцены / Voiceover & cutscenes</li>
-      <li>🔜 Первый публичный билд / First public build (soon)</li>
-      <li>🌟 Публикация / Release</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>🤝 Команда / Team</h2>
-    <ul>
-      <li>👤 Сценарий / Story: RavenCorp</li>
-      <li>👤 Дизайн / Design: DarkFeather</li>
-      <li>👤 Программирование / Code: Owlbyte</li>
-      <li>👤 Арт и UI / Art & UI: NoctisDraws</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>📬 Контакты / Contacts</h2>
-    <p>📧 Email: theravenproject@proton.me</p>
-    <p>🐦 Twitter / X: <a href="https://twitter.com/TheRavenVN" target="_blank">@TheRavenVN</a></p>
-    <p>💬 Discord: <a href="https://discord.gg/example" target="_blank">discord.gg/example</a></p>
   </section>
 
   <footer>
@@ -280,20 +232,22 @@
       en: {
         welcome: "Click to Enter",
         tagline: '"In the darkness of the past lies something that should have never been found."',
+        title: "The Raven",
         aboutTitle: "About the Project",
         aboutText: "Year 303 of the Era of Magic's Disappearance. A group of mercenaries embarks on a mission, unaware they will awaken an ancient force buried beneath the earth..."
       },
       ru: {
         welcome: "Нажмите, чтобы войти",
         tagline: '"В темноте прошлого прячется то, что не должно было быть найдено."',
+        title: "The Raven",
         aboutTitle: "О проекте",
         aboutText: "303-й год Эры Исчезновения Магии. Группа наёмников отправляется на задание, не подозревая, что пробудит древнюю силу, погребённую под землёй..."
       }
     };
 
     document.addEventListener('mousemove', (e) => {
-      const x = e.pageX;
-      const y = e.pageY;
+      const x = e.clientX;
+      const y = e.clientY;
       spotlight.style.setProperty('--x', `${x}px`);
       spotlight.style.setProperty('--y', `${y}px`);
       torch.style.left = `${x}px`;
@@ -315,6 +269,7 @@
       currentLang = currentLang === 'en' ? 'ru' : 'en';
       langToggle.textContent = currentLang === 'en' ? '🌐 EN' : '🌐 RU';
 
+      document.querySelector('[data-lang="title"]').textContent = translations[currentLang].title;
       document.querySelector('[data-lang="tagline"]').textContent = translations[currentLang].tagline;
       document.querySelector('[data-lang="welcome"]').textContent = translations[currentLang].welcome;
       document.querySelector('[data-lang="about-title"]').textContent = translations[currentLang].aboutTitle;

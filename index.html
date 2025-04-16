@@ -25,10 +25,8 @@
 
     #intro-container {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
       background-color: black;
       z-index: 9999;
     }
@@ -80,18 +78,17 @@
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
+      width: 100vw;
+      height: 100vh;
       pointer-events: none;
       z-index: 9999;
     }
 
     .spotlight {
-      position: fixed;
-      width: 100vw;
-      height: 100vh;
-      background: transparent;
-      z-index: 2;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255,255,200,0.1) 0%, rgba(0,0,0,0.95) 200px);
+      transition: background-position 0.05s ease;
     }
 
     #torch {
@@ -166,11 +163,6 @@
       color: #777;
       position: relative;
       z-index: 4;
-    }
-
-    a {
-      color: #ccc;
-      text-decoration: underline;
     }
   </style>
 </head>
@@ -300,8 +292,8 @@
     };
 
     document.addEventListener('mousemove', (e) => {
-      const x = e.pageX;
-      const y = e.pageY;
+      const x = e.clientX;
+      const y = e.clientY;
       spotlight.style.setProperty('--x', `${x}px`);
       spotlight.style.setProperty('--y', `${y}px`);
       torch.style.left = `${x}px`;
@@ -321,6 +313,7 @@
     function toggleLanguage() {
       currentLang = currentLang === 'en' ? 'ru' : 'en';
       langToggle.textContent = currentLang === 'en' ? '🌐 EN' : '🌐 RU';
+
       document.querySelector('[data-lang="tagline"]').textContent = translations[currentLang].tagline;
       document.querySelector('[data-lang="welcome"]').textContent = translations[currentLang].welcome;
       document.querySelector('[data-lang="about-title"]').textContent = translations[currentLang].aboutTitle;

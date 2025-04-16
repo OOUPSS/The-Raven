@@ -15,8 +15,8 @@
       font-family: 'Triodion', serif;
       background-color: #000;
       color: #e0e0e0;
-      position: relative;
       overflow-x: hidden;
+      position: relative;
     }
 
     .hide-cursor { cursor: none; }
@@ -70,29 +70,32 @@
 
     .lang-toggle:hover { background-color: #444; }
 
-    .spotlight {
-      position: fixed;
+    .cursor-layers {
+      position: absolute;
       top: 0;
       left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .spotlight {
+      position: absolute;
       width: 100vw;
       height: 100vh;
-      pointer-events: none;
       background: radial-gradient(
         circle 90px at var(--x, 50%) var(--y, 50%),
         rgba(255, 160, 50, 0.35) 0%,
         rgba(0, 0, 0, 0.92) 80%,
         black 100%
       );
-      z-index: 2;
     }
 
     #torch {
       position: absolute;
-      top: 0;
-      left: 0;
       width: 48px;
       transform: translate(-50%, -50%);
-      z-index: 3;
       pointer-events: none;
     }
 
@@ -173,15 +176,15 @@
     <div id="start-btn" data-lang="welcome">Click to Enter</div>
   </div>
 
-  <!-- Свет -->
-  <div class="spotlight" id="light"></div>
-
-  <!-- Факел -->
-  <img id="torch" src="https://ooupss.github.io/The-Raven/files/torch.png" alt="Torch" />
+  <!-- Факел и свет -->
+  <div class="cursor-layers">
+    <div class="spotlight" id="light"></div>
+    <img id="torch" src="https://ooupss.github.io/The-Raven/files/torch.png" alt="Torch" />
+  </div>
 
   <!-- Контент -->
   <header>
-    <h1 data-lang="title">The Raven</h1>
+    <h1>The Raven</h1>
     <p class="tagline" data-lang="tagline">"In the darkness of the past lies something that should have never been found."</p>
     <div class="badges">
       <img src="https://img.shields.io/badge/status-in_development-orange" alt="status">
@@ -277,22 +280,20 @@
       en: {
         welcome: "Click to Enter",
         tagline: '"In the darkness of the past lies something that should have never been found."',
-        title: "The Raven",
         aboutTitle: "About the Project",
         aboutText: "Year 303 of the Era of Magic's Disappearance. A group of mercenaries embarks on a mission, unaware they will awaken an ancient force buried beneath the earth..."
       },
       ru: {
         welcome: "Нажмите, чтобы войти",
         tagline: '"В темноте прошлого прячется то, что не должно было быть найдено."',
-        title: "Ворон",
         aboutTitle: "О проекте",
         aboutText: "303-й год Эры Исчезновения Магии. Группа наёмников отправляется на задание, не подозревая, что пробудит древнюю силу, погребённую под землёй..."
       }
     };
 
     document.addEventListener('mousemove', (e) => {
-      const x = e.clientX;
-      const y = e.clientY;
+      const x = e.pageX;
+      const y = e.pageY;
       spotlight.style.setProperty('--x', `${x}px`);
       spotlight.style.setProperty('--y', `${y}px`);
       torch.style.left = `${x}px`;
@@ -314,7 +315,6 @@
       currentLang = currentLang === 'en' ? 'ru' : 'en';
       langToggle.textContent = currentLang === 'en' ? '🌐 EN' : '🌐 RU';
 
-      document.querySelector('[data-lang="title"]').textContent = translations[currentLang].title;
       document.querySelector('[data-lang="tagline"]').textContent = translations[currentLang].tagline;
       document.querySelector('[data-lang="welcome"]').textContent = translations[currentLang].welcome;
       document.querySelector('[data-lang="about-title"]').textContent = translations[currentLang].aboutTitle;

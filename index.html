@@ -15,6 +15,7 @@
       font-family: 'Triodion', serif;
       background-color: #000;
       color: #e0e0e0;
+      position: relative;
       overflow-x: hidden;
     }
 
@@ -29,7 +30,8 @@
     }
 
     #intro-video {
-      width: 100%; height: 100%;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
     }
 
@@ -61,16 +63,17 @@
       border-radius: 8px;
       font-size: 14px;
       cursor: pointer;
-      z-index: 10000;
-      transition: background-color 0.3s;
+      z-index: 10001;
     }
 
     .lang-toggle:hover { background-color: #444; }
 
     .spotlight {
       position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
       pointer-events: none;
       background: radial-gradient(
         circle 90px at var(--x, 50%) var(--y, 50%),
@@ -83,7 +86,8 @@
 
     #torch {
       position: fixed;
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
       width: 48px;
       transform: translate(-50%, -50%);
       z-index: 10001;
@@ -157,7 +161,6 @@
   </style>
 </head>
 <body>
-
   <div id="intro-container">
     <video id="intro-video" playsinline>
       <source src="https://ooupss.github.io/The-Raven/files/Welcome%20to%20The%20Raven.mp4" type="video/mp4">
@@ -169,8 +172,8 @@
   <img id="torch" src="https://ooupss.github.io/The-Raven/files/torch.png" alt="Torch" />
 
   <header>
-    <h1 data-lang="title">The Raven</h1>
-    <p class="tagline" data-lang="tagline">"In the darkness of the past lies something that should have never been found."</p>
+    <h1>The Raven</h1>
+    <p class="tagline" data-lang="tagline"></p>
     <div class="badges">
       <img src="https://img.shields.io/badge/status-in_development-orange" alt="status">
       <img src="https://img.shields.io/badge/license-CC_BY--NC_4.0-blue" alt="license">
@@ -179,11 +182,8 @@
   </header>
 
   <section>
-    <h2 data-lang="about-title">About the Project</h2>
-    <p data-lang="about-text">
-      303-й год Эры Исчезновения Магии. Группа наёмников отправляется на задание,
-      не подозревая, что пробудит древнюю силу, погребённую под землёй...
-    </p>
+    <h2 data-lang="about-title"></h2>
+    <p data-lang="about-text"></p>
   </section>
 
   <section>
@@ -199,7 +199,7 @@
     <h2>🛠️ Технологии / Technologies</h2>
     <ul>
       <li>Ren'Py — движок визуальных новелл / visual novel engine</li>
-      <li>CapCut + AI — синематик сцены / cinematics & voiceover</li>
+      <li>CapCut + AI — синематик сцены с озвучкой / cinematics & voiceover</li>
       <li>GitHub Pages — демо и портфолио / (soon) demo & portfolio</li>
     </ul>
   </section>
@@ -210,6 +210,39 @@
       Этот проект распространяется под лицензией <a href="https://creativecommons.org/licenses/by-nc/4.0" target="_blank">Creative Commons Attribution-NonCommercial 4.0 International</a>.<br>
       Вы можете копировать, перерабатывать и распространять материалы в некоммерческих целях, при условии указания авторства.
     </p>
+    <p>
+      This work is licensed under the <a href="https://creativecommons.org/licenses/by-nc/4.0" target="_blank">Creative Commons Attribution-NonCommercial 4.0 International License</a>.<br>
+      You may share and adapt the material for non-commercial purposes, with proper credit.
+    </p>
+  </section>
+
+  <section>
+    <h2>📅 Дорожная карта / Roadmap</h2>
+    <ul>
+      <li>✅ Идея и концепт / Idea & concept</li>
+      <li>✅ Прототип / Prototype</li>
+      <li>🔄 Разработка демо / Demo in progress</li>
+      <li>⏳ Озвучка / Voiceover</li>
+      <li>🔜 Публичный билд / Public Build</li>
+      <li>🌟 Релиз / Release</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🤝 Команда / Team</h2>
+    <ul>
+      <li>👤 Story: RavenCorp</li>
+      <li>👤 Design: DarkFeather</li>
+      <li>👤 Code: Owlbyte</li>
+      <li>👤 Art & UI: NoctisDraws</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📬 Контакты / Contacts</h2>
+    <p>📧 Email: theravenproject@proton.me</p>
+    <p>🕊️ Twitter: <a href="https://twitter.com/TheRavenVN" target="_blank">@TheRavenVN</a></p>
+    <p>💬 Discord: <a href="https://discord.gg/example" target="_blank">discord.gg/example</a></p>
   </section>
 
   <footer>
@@ -232,14 +265,12 @@
       en: {
         welcome: "Click to Enter",
         tagline: '"In the darkness of the past lies something that should have never been found."',
-        title: "The Raven",
         aboutTitle: "About the Project",
         aboutText: "Year 303 of the Era of Magic's Disappearance. A group of mercenaries embarks on a mission, unaware they will awaken an ancient force buried beneath the earth..."
       },
       ru: {
         welcome: "Нажмите, чтобы войти",
         tagline: '"В темноте прошлого прячется то, что не должно было быть найдено."',
-        title: "The Raven",
         aboutTitle: "О проекте",
         aboutText: "303-й год Эры Исчезновения Магии. Группа наёмников отправляется на задание, не подозревая, что пробудит древнюю силу, погребённую под землёй..."
       }
@@ -269,13 +300,13 @@
       currentLang = currentLang === 'en' ? 'ru' : 'en';
       langToggle.textContent = currentLang === 'en' ? '🌐 EN' : '🌐 RU';
 
-      document.querySelector('[data-lang="title"]').textContent = translations[currentLang].title;
-      document.querySelector('[data-lang="tagline"]').textContent = translations[currentLang].tagline;
-      document.querySelector('[data-lang="welcome"]').textContent = translations[currentLang].welcome;
-      document.querySelector('[data-lang="about-title"]').textContent = translations[currentLang].aboutTitle;
-      document.querySelector('[data-lang="about-text"]').textContent = translations[currentLang].aboutText;
+      for (let key in translations[currentLang]) {
+        const el = document.querySelector(`[data-lang="${key}"]`);
+        if (el) el.textContent = translations[currentLang][key];
+      }
     }
-  </script>
 
+    toggleLanguage();
+  </script>
 </body>
 </html>

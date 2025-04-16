@@ -10,6 +10,10 @@
       src: url('https://ooupss.github.io/The-Raven/files/Triodion-Regular.ttf') format('truetype');
     }
 
+    * {
+      cursor: none !important;
+    }
+
     body {
       margin: 0;
       font-family: 'Triodion', serif;
@@ -17,15 +21,14 @@
       color: #e0e0e0;
       overflow-x: hidden;
       position: relative;
-      cursor: none; /* отключаем системный курсор */
     }
-
-    .hide-cursor { cursor: none; }
 
     #intro-container {
       position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
       background-color: black;
       z-index: 9999;
     }
@@ -46,14 +49,15 @@
       font-family: 'Triodion', serif;
       background: rgba(0, 0, 0, 0.5);
       padding: 1rem 2rem;
-      cursor: pointer;
       z-index: 10000;
       border: 2px solid #f0e6d2;
       border-radius: 8px;
       transition: background-color 0.3s;
     }
 
-    #start-btn:hover { background-color: rgba(0, 0, 0, 0.8); }
+    #start-btn:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
 
     .lang-toggle {
       position: fixed;
@@ -64,12 +68,13 @@
       padding: 8px 12px;
       border-radius: 8px;
       font-size: 14px;
-      cursor: pointer;
       z-index: 10000;
       transition: background-color 0.3s;
     }
 
-    .lang-toggle:hover { background-color: #444; }
+    .lang-toggle:hover {
+      background-color: #444;
+    }
 
     .cursor-layers {
       position: fixed;
@@ -162,9 +167,10 @@
       position: relative;
       z-index: 4;
     }
-    /* Добавляем указатель для кликабельных элементов */
-    button, a, .lang-toggle, #start-btn {
-      cursor: pointer !important;
+
+    a {
+      color: #ccc;
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -315,7 +321,6 @@
     function toggleLanguage() {
       currentLang = currentLang === 'en' ? 'ru' : 'en';
       langToggle.textContent = currentLang === 'en' ? '🌐 EN' : '🌐 RU';
-
       document.querySelector('[data-lang="tagline"]').textContent = translations[currentLang].tagline;
       document.querySelector('[data-lang="welcome"]').textContent = translations[currentLang].welcome;
       document.querySelector('[data-lang="about-title"]').textContent = translations[currentLang].aboutTitle;

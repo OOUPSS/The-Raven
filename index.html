@@ -52,9 +52,7 @@
       transition: background-color 0.3s;
     }
 
-    #start-btn:hover {
-      background-color: rgba(0, 0, 0, 0.8);
-    }
+    #start-btn:hover { background-color: rgba(0, 0, 0, 0.8); }
 
     .lang-toggle {
       position: fixed;
@@ -74,38 +72,100 @@
 
     .spotlight {
       position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
       pointer-events: none;
-      background: radial-gradient(circle 90px at var(--x, 50%) var(--y, 50%), rgba(255, 160, 50, 0.35) 0%, rgba(0, 0, 0, 0.92) 80%, black 100%);
+      background: radial-gradient(
+        circle 90px at var(--x, 50%) var(--y, 50%),
+        rgba(255, 160, 50, 0.35) 0%,
+        rgba(0, 0, 0, 0.92) 80%,
+        black 100%
+      );
       z-index: 2;
     }
 
     #torch {
       position: absolute;
+      top: 0;
+      left: 0;
       width: 48px;
       transform: translate(-50%, -50%);
       z-index: 3;
       pointer-events: none;
     }
 
-    header, section, footer {
+    header {
+      text-align: center;
+      padding: 2rem 1rem;
+      background-color: #1a1a1a;
       position: relative;
       z-index: 4;
-      max-width: 960px;
-      margin: auto;
-      padding: 2rem 1rem;
     }
 
-    h1, h2 { margin: 0.5em 0; }
-    .tagline { font-style: italic; color: #aaa; }
-    .badges img { margin-right: 0.5rem; }
-    .screenshots { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
-    .screenshots div { background: #1e1e1e; border: 1px dashed #444; height: 135px; display: flex; align-items: center; justify-content: center; color: #888; }
-    footer { font-size: 0.9rem; text-align: center; background-color: #1a1a1a; color: #777; }
+    h1 {
+      font-size: 2.5rem;
+      margin: 0.2rem 0;
+    }
+
+    p.tagline {
+      font-style: italic;
+      color: #a0a0a0;
+    }
+
+    .badges {
+      margin: 1rem 0;
+    }
+
+    .badges img {
+      margin: 0 0.3rem;
+    }
+
+    section {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      position: relative;
+      z-index: 4;
+    }
+
+    h2 {
+      border-bottom: 1px solid #444;
+      padding-bottom: 0.5rem;
+    }
+
+    .screenshots {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .screenshots div {
+      background-color: #1e1e1e;
+      height: 135px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #888;
+      border: 1px dashed #444;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      background-color: #1a1a1a;
+      color: #777;
+      position: relative;
+      z-index: 4;
+    }
   </style>
 </head>
 <body>
+
+  <!-- Видео интро -->
   <div id="intro-container">
     <video id="intro-video" playsinline>
       <source src="https://ooupss.github.io/The-Raven/files/Welcome%20to%20The%20Raven.mp4" type="video/mp4">
@@ -113,9 +173,13 @@
     <div id="start-btn" data-lang="welcome">Click to Enter</div>
   </div>
 
+  <!-- Свет -->
   <div class="spotlight" id="light"></div>
+
+  <!-- Факел -->
   <img id="torch" src="https://ooupss.github.io/The-Raven/files/torch.png" alt="Torch" />
 
+  <!-- Контент -->
   <header>
     <h1 data-lang="title">The Raven</h1>
     <p class="tagline" data-lang="tagline">"In the darkness of the past lies something that should have never been found."</p>
@@ -128,40 +192,73 @@
 
   <section>
     <h2 data-lang="about-title">About the Project</h2>
-    <p data-lang="about-text">303-й год Эры Исчезновения Магии...</p>
+    <p data-lang="about-text">
+      303-й год Эры Исчезновения Магии. Группа наёмников отправляется на задание,
+      не подозревая, что пробудит древнюю силу, погребённую под землёй...
+    </p>
   </section>
 
   <section>
-    <h2 data-lang="tech-title">🛠️ Technologies</h2>
+    <h2>Screenshots</h2>
+    <div class="screenshots">
+      <div>Scene Placeholder 1</div>
+      <div>Scene Placeholder 2</div>
+      <div>Scene Placeholder 3</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>🛠️ Технологии / Technologies</h2>
     <ul>
-      <li data-lang="tech-1">Ren'Py — visual novel engine</li>
-      <li data-lang="tech-2">CapCut + AI — cinematics & voiceover</li>
-      <li data-lang="tech-3">GitHub Pages — demo & portfolio</li>
+      <li>Ren'Py — движок визуальных новелл / visual novel engine</li>
+      <li>CapCut + AI — синематик сцены с озвучкой / cinematics & voiceover</li>
+      <li>GitHub Pages — демо и портфолио / (soon) demo & portfolio</li>
     </ul>
   </section>
 
   <section>
-    <h2 data-lang="license-title">🧾 License</h2>
-    <p data-lang="license-text">This work is licensed under Creative Commons Attribution-NonCommercial 4.0...</p>
+    <h2>🧾 Лицензия / License</h2>
+    <p>
+      Этот проект распространяется под лицензией <a href="https://creativecommons.org/licenses/by-nc/4.0" target="_blank">Creative Commons Attribution-NonCommercial 4.0 International</a>.<br>
+      Вы можете копировать, перерабатывать и распространять материалы в некоммерческих целях, при условии указания авторства.
+    </p>
+    <p>
+      This work is licensed under the <a href="https://creativecommons.org/licenses/by-nc/4.0" target="_blank">Creative Commons Attribution-NonCommercial 4.0 International License</a>.<br>
+      You may share and adapt the material for non-commercial purposes, with proper credit.
+    </p>
   </section>
 
   <section>
-    <h2 data-lang="roadmap-title">🗺️ Roadmap</h2>
+    <h2>📅 Дорожная карта / Roadmap</h2>
     <ul>
-      <li data-lang="road-1">Prototype > Cinematics > Demo</li>
-      <li data-lang="road-2">Voiceover & localization</li>
-      <li data-lang="road-3">Public test release</li>
+      <li>✅ Идея и концепт / Idea & concept</li>
+      <li>✅ Прототип / Prototype</li>
+      <li>🔄 Разработка демо-версии / Demo in progress</li>
+      <li>⏳ Озвучка и катсцены / Voiceover & cutscenes</li>
+      <li>🔜 Первый публичный билд / First public build (soon)</li>
+      <li>🌟 Публикация / Release</li>
     </ul>
   </section>
 
   <section>
-    <h2 data-lang="team-title">🎭 Team</h2>
-    <p data-lang="team-text">Anonsik (dev), Copchik (watching), Raven (silently guides)</p>
+    <h2>🤝 Команда / Team</h2>
+    <ul>
+      <li>👤 Сценарий / Story: RavenCorp</li>
+      <li>👤 Дизайн / Design: DarkFeather</li>
+      <li>👤 Программирование / Code: Owlbyte</li>
+      <li>👤 Арт и UI / Art & UI: NoctisDraws</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📬 Контакты / Contacts</h2>
+    <p>📧 Email: theravenproject@proton.me</p>
+    <p>🐦 Twitter / X: <a href="https://twitter.com/TheRavenVN" target="_blank">@TheRavenVN</a></p>
+    <p>💬 Discord: <a href="https://discord.gg/example" target="_blank">discord.gg/example</a></p>
   </section>
 
   <footer>
-    &copy; All rights reserved. The Copchik is watching 👁<br>
-    <span data-lang="contacts">📬 Contact: the.raven.visual@gmail.com</span>
+    &copy; All rights reserved. The Copchik is watching 👁
   </footer>
 
   <div class="lang-toggle" onclick="toggleLanguage()">🌐 EN</div>
@@ -179,49 +276,23 @@
     const translations = {
       en: {
         welcome: "Click to Enter",
-        title: "The Raven",
         tagline: '"In the darkness of the past lies something that should have never been found."',
-        'about-title': "About the Project",
-        'about-text': "Year 303 of the Era of Magic's Disappearance...",
-        'tech-title': "🛠️ Technologies",
-        'tech-1': "Ren'Py — visual novel engine",
-        'tech-2': "CapCut + AI — cinematics & voiceover",
-        'tech-3': "GitHub Pages — demo & portfolio",
-        'license-title': "🧾 License",
-        'license-text': "This work is licensed under the Creative Commons Attribution-NonCommercial 4.0...",
-        'roadmap-title': "🗺️ Roadmap",
-        'road-1': "Prototype > Cinematics > Demo",
-        'road-2': "Voiceover & localization",
-        'road-3': "Public test release",
-        'team-title': "🎭 Team",
-        'team-text': "Anonsik (dev), Copchik (watching), Raven (silently guides)",
-        contacts: "📬 Contact: the.raven.visual@gmail.com"
+        title: "The Raven",
+        aboutTitle: "About the Project",
+        aboutText: "Year 303 of the Era of Magic's Disappearance. A group of mercenaries embarks on a mission, unaware they will awaken an ancient force buried beneath the earth..."
       },
       ru: {
         welcome: "Нажмите, чтобы войти",
-        title: "Ворон",
         tagline: '"В темноте прошлого прячется то, что не должно было быть найдено."',
-        'about-title': "О проекте",
-        'about-text': "303-й год Эры Исчезновения Магии...",
-        'tech-title': "🛠️ Технологии",
-        'tech-1': "Ren'Py — движок визуальных новелл",
-        'tech-2': "CapCut + AI — синематик сцены с озвучкой",
-        'tech-3': "GitHub Pages — демо и портфолио",
-        'license-title': "🧾 Лицензия",
-        'license-text': "Проект под лицензией Creative Commons Attribution-NonCommercial 4.0...",
-        'roadmap-title': "🗺️ Дорожная карта",
-        'road-1': "Прототип > Синематики > Демо",
-        'road-2': "Озвучка и локализация",
-        'road-3': "Публичный тестовый релиз",
-        'team-title': "🎭 Команда",
-        'team-text': "Анонсик (разработка), Копчик (наблюдает), Ворон (молча направляет)",
-        contacts: "📬 Контакт: the.raven.visual@gmail.com"
+        title: "Ворон",
+        aboutTitle: "О проекте",
+        aboutText: "303-й год Эры Исчезновения Магии. Группа наёмников отправляется на задание, не подозревая, что пробудит древнюю силу, погребённую под землёй..."
       }
     };
 
     document.addEventListener('mousemove', (e) => {
       const x = e.clientX;
-      const y = e.clientY + window.scrollY;
+      const y = e.clientY;
       spotlight.style.setProperty('--x', `${x}px`);
       spotlight.style.setProperty('--y', `${y}px`);
       torch.style.left = `${x}px`;
@@ -242,13 +313,14 @@
     function toggleLanguage() {
       currentLang = currentLang === 'en' ? 'ru' : 'en';
       langToggle.textContent = currentLang === 'en' ? '🌐 EN' : '🌐 RU';
-      document.querySelectorAll('[data-lang]').forEach(el => {
-        const key = el.getAttribute('data-lang');
-        if (translations[currentLang][key]) {
-          el.textContent = translations[currentLang][key];
-        }
-      });
+
+      document.querySelector('[data-lang="title"]').textContent = translations[currentLang].title;
+      document.querySelector('[data-lang="tagline"]').textContent = translations[currentLang].tagline;
+      document.querySelector('[data-lang="welcome"]').textContent = translations[currentLang].welcome;
+      document.querySelector('[data-lang="about-title"]').textContent = translations[currentLang].aboutTitle;
+      document.querySelector('[data-lang="about-text"]').textContent = translations[currentLang].aboutText;
     }
   </script>
+
 </body>
 </html>

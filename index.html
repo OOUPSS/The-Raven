@@ -10,22 +10,22 @@
       src: url('https://ooupss.github.io/The-Raven/files/Triodion-Regular.ttf') format('truetype');
     }
 
-    html, body {
+    body {
       margin: 0;
-      padding: 0;
       font-family: 'Triodion', serif;
       background-color: #000;
       color: #e0e0e0;
-      cursor: none;
       overflow-x: hidden;
+      position: relative;
+      cursor: none; /* отключаем системный курсор */
     }
+
+    .hide-cursor { cursor: none; }
 
     #intro-container {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
       background-color: black;
       z-index: 9999;
     }
@@ -46,7 +46,7 @@
       font-family: 'Triodion', serif;
       background: rgba(0, 0, 0, 0.5);
       padding: 1rem 2rem;
-      cursor: none;
+      cursor: pointer;
       z-index: 10000;
       border: 2px solid #f0e6d2;
       border-radius: 8px;
@@ -64,37 +64,42 @@
       padding: 8px 12px;
       border-radius: 8px;
       font-size: 14px;
-      cursor: none;
+      cursor: pointer;
       z-index: 10000;
       transition: background-color 0.3s;
     }
 
     .lang-toggle:hover { background-color: #444; }
 
-    .spotlight {
+    .cursor-layers {
       position: fixed;
       top: 0;
       left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    .spotlight {
+      position: fixed;
       width: 100vw;
       height: 100vh;
-      pointer-events: none;
       background: radial-gradient(
-        circle 100px at var(--x, 50%) var(--y, 50%),
+        circle 90px at var(--x, 50%) var(--y, 50%),
         rgba(255, 160, 50, 0.35) 0%,
         rgba(0, 0, 0, 0.92) 80%,
         black 100%
       );
-      z-index: 1;
+      z-index: 2;
     }
 
     #torch {
       position: fixed;
-      top: 0;
-      left: 0;
       width: 64px;
       transform: translate(-50%, -50%);
-      z-index: 9998;
       pointer-events: none;
+      z-index: 10000;
     }
 
     header {
@@ -102,7 +107,7 @@
       padding: 2rem 1rem;
       background-color: #1a1a1a;
       position: relative;
-      z-index: 2;
+      z-index: 4;
     }
 
     h1 {
@@ -128,7 +133,7 @@
       margin: 2rem auto;
       padding: 0 1rem;
       position: relative;
-      z-index: 2;
+      z-index: 4;
     }
 
     h2 {
@@ -160,7 +165,7 @@
       background-color: #1a1a1a;
       color: #777;
       position: relative;
-      z-index: 2;
+      z-index: 4;
     }
   </style>
 </head>
@@ -174,15 +179,15 @@
     <div id="start-btn" data-lang="welcome">Click to Enter</div>
   </div>
 
-  <!-- Свет -->
-  <div class="spotlight" id="light"></div>
-
-  <!-- Факел -->
-  <img id="torch" src="https://ooupss.github.io/The-Raven/files/torch.png" alt="Torch" />
+  <!-- Факел и свет -->
+  <div class="cursor-layers">
+    <div class="spotlight" id="light"></div>
+    <img id="torch" src="https://ooupss.github.io/The-Raven/files/torch.png" alt="Torch" />
+  </div>
 
   <!-- Контент -->
   <header>
-    <h1 data-lang="title">The Raven</h1>
+    <h1>The Raven</h1>
     <p class="tagline" data-lang="tagline">"In the darkness of the past lies something that should have never been found."</p>
     <div class="badges">
       <img src="https://img.shields.io/badge/status-in_development-orange" alt="status">
@@ -199,7 +204,64 @@
     </p>
   </section>
 
-  <!-- остальные секции, лицензия, команда, контакты, дорожная карта и т.д. -->
+  <section>
+    <h2>Screenshots</h2>
+    <div class="screenshots">
+      <div>Scene Placeholder 1</div>
+      <div>Scene Placeholder 2</div>
+      <div>Scene Placeholder 3</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>🛠️ Технологии / Technologies</h2>
+    <ul>
+      <li>Ren'Py — движок визуальных новелл / visual novel engine</li>
+      <li>CapCut + AI — синематик сцены с озвучкой / cinematics & voiceover</li>
+      <li>GitHub Pages — демо и портфолио / (soon) demo & portfolio</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🧾 Лицензия / License</h2>
+    <p>
+      Этот проект распространяется под лицензией <a href="https://creativecommons.org/licenses/by-nc/4.0" target="_blank">Creative Commons Attribution-NonCommercial 4.0 International</a>.<br>
+      Вы можете копировать, перерабатывать и распространять материалы в некоммерческих целях, при условии указания авторства.
+    </p>
+    <p>
+      This work is licensed under the <a href="https://creativecommons.org/licenses/by-nc/4.0" target="_blank">Creative Commons Attribution-NonCommercial 4.0 International License</a>.<br>
+      You may share and adapt the material for non-commercial purposes, with proper credit.
+    </p>
+  </section>
+
+  <section>
+    <h2>📅 Дорожная карта / Roadmap</h2>
+    <ul>
+      <li>✅ Идея и концепт / Idea & concept</li>
+      <li>✅ Прототип / Prototype</li>
+      <li>🔄 Разработка демо-версии / Demo in progress</li>
+      <li>⏳ Озвучка и катсцены / Voiceover & cutscenes</li>
+      <li>🔜 Первый публичный билд / First public build (soon)</li>
+      <li>🌟 Публикация / Release</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🤝 Команда / Team</h2>
+    <ul>
+      <li>👤 Сценарий / Story: RavenCorp</li>
+      <li>👤 Дизайн / Design: DarkFeather</li>
+      <li>👤 Программирование / Code: Owlbyte</li>
+      <li>👤 Арт и UI / Art & UI: NoctisDraws</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📬 Контакты / Contacts</h2>
+    <p>📧 Email: theravenproject@proton.me</p>
+    <p>🐦 Twitter / X: <a href="https://twitter.com/TheRavenVN" target="_blank">@TheRavenVN</a></p>
+    <p>💬 Discord: <a href="https://discord.gg/example" target="_blank">discord.gg/example</a></p>
+  </section>
 
   <footer>
     &copy; All rights reserved. The Copchik is watching 👁
@@ -221,22 +283,20 @@
       en: {
         welcome: "Click to Enter",
         tagline: '"In the darkness of the past lies something that should have never been found."',
-        title: "The Raven",
         aboutTitle: "About the Project",
         aboutText: "Year 303 of the Era of Magic's Disappearance. A group of mercenaries embarks on a mission, unaware they will awaken an ancient force buried beneath the earth..."
       },
       ru: {
         welcome: "Нажмите, чтобы войти",
         tagline: '"В темноте прошлого прячется то, что не должно было быть найдено."',
-        title: "The Raven",
         aboutTitle: "О проекте",
         aboutText: "303-й год Эры Исчезновения Магии. Группа наёмников отправляется на задание, не подозревая, что пробудит древнюю силу, погребённую под землёй..."
       }
     };
 
     document.addEventListener('mousemove', (e) => {
-      const x = e.clientX;
-      const y = e.clientY;
+      const x = e.pageX;
+      const y = e.pageY;
       spotlight.style.setProperty('--x', `${x}px`);
       spotlight.style.setProperty('--y', `${y}px`);
       torch.style.left = `${x}px`;
@@ -257,12 +317,12 @@
       currentLang = currentLang === 'en' ? 'ru' : 'en';
       langToggle.textContent = currentLang === 'en' ? '🌐 EN' : '🌐 RU';
 
-      document.querySelector('[data-lang="title"]').textContent = translations[currentLang].title;
       document.querySelector('[data-lang="tagline"]').textContent = translations[currentLang].tagline;
       document.querySelector('[data-lang="welcome"]').textContent = translations[currentLang].welcome;
       document.querySelector('[data-lang="about-title"]').textContent = translations[currentLang].aboutTitle;
       document.querySelector('[data-lang="about-text"]').textContent = translations[currentLang].aboutText;
     }
   </script>
+
 </body>
 </html>

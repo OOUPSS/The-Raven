@@ -4,8 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Raven</title>
-
-  <!-- Шрифт -->
   <style>
     @font-face {
       font-family: 'Triodion';
@@ -21,12 +19,8 @@
       overflow-x: hidden;
     }
 
-    /* Класс для скрытия курсора */
-    .hide-cursor {
-      cursor: none;
-    }
+    .hide-cursor { cursor: none; }
 
-    /* Видео интро */
     #intro-container {
       position: fixed;
       top: 0; left: 0;
@@ -58,9 +52,7 @@
       transition: background-color 0.3s;
     }
 
-    #start-btn:hover {
-      background-color: rgba(0, 0, 0, 0.8);
-    }
+    #start-btn:hover { background-color: rgba(0, 0, 0, 0.8); }
 
     .lang-toggle {
       position: fixed;
@@ -76,9 +68,7 @@
       transition: background-color 0.3s;
     }
 
-    .lang-toggle:hover {
-      background-color: #444;
-    }
+    .lang-toggle:hover { background-color: #444; }
 
     .spotlight {
       position: fixed;
@@ -179,7 +169,6 @@
   <div id="intro-container">
     <video id="intro-video" playsinline>
       <source src="https://ooupss.github.io/The-Raven/files/Welcome%20to%20The%20Raven.mp4" type="video/mp4">
-      Your browser does not support the video tag.
     </video>
     <div id="start-btn" data-lang="welcome">Click to Enter</div>
   </div>
@@ -218,14 +207,62 @@
     </div>
   </section>
 
+  <section>
+    <h2>🛠️ Технологии / Technologies</h2>
+    <ul>
+      <li>Ren'Py — движок визуальных новелл / visual novel engine</li>
+      <li>CapCut + AI — синематик сцены с озвучкой / cinematics & voiceover</li>
+      <li>GitHub Pages — демо и портфолио / (soon) demo & portfolio</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🧾 Лицензия / License</h2>
+    <p>
+      Этот проект распространяется под лицензией <a href="https://creativecommons.org/licenses/by-nc/4.0" target="_blank">Creative Commons Attribution-NonCommercial 4.0 International</a>.<br>
+      Вы можете копировать, перерабатывать и распространять материалы в некоммерческих целях, при условии указания авторства.
+    </p>
+    <p>
+      This work is licensed under the <a href="https://creativecommons.org/licenses/by-nc/4.0" target="_blank">Creative Commons Attribution-NonCommercial 4.0 International License</a>.<br>
+      You may share and adapt the material for non-commercial purposes, with proper credit.
+    </p>
+  </section>
+
+  <section>
+    <h2>📅 Дорожная карта / Roadmap</h2>
+    <ul>
+      <li>✅ Идея и концепт / Idea & concept</li>
+      <li>✅ Прототип / Prototype</li>
+      <li>🔄 Разработка демо-версии / Demo in progress</li>
+      <li>⏳ Озвучка и катсцены / Voiceover & cutscenes</li>
+      <li>🔜 Первый публичный билд / First public build (soon)</li>
+      <li>🌟 Публикация / Release</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🤝 Команда / Team</h2>
+    <ul>
+      <li>👤 Сценарий / Story: RavenCorp</li>
+      <li>👤 Дизайн / Design: DarkFeather</li>
+      <li>👤 Программирование / Code: Owlbyte</li>
+      <li>👤 Арт и UI / Art & UI: NoctisDraws</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📬 Контакты / Contacts</h2>
+    <p>📧 Email: theravenproject@proton.me</p>
+    <p>🐦 Twitter / X: <a href="https://twitter.com/TheRavenVN" target="_blank">@TheRavenVN</a></p>
+    <p>💬 Discord: <a href="https://discord.gg/example" target="_blank">discord.gg/example</a></p>
+  </section>
+
   <footer>
     &copy; All rights reserved. The Copchik is watching 👁
   </footer>
 
-  <!-- Переключатель языка -->
   <div class="lang-toggle" onclick="toggleLanguage()">🌐 EN</div>
 
-  <!-- Скрипты -->
   <script>
     const spotlight = document.getElementById('light');
     const torch = document.getElementById('torch');
@@ -266,7 +303,7 @@
       video.volume = 1;
       video.play();
       btn.style.display = 'none';
-      document.body.classList.add('hide-cursor'); // Скрытие курсора после клика
+      document.body.classList.add('hide-cursor');
     });
 
     video.addEventListener('ended', () => {

@@ -17,6 +17,18 @@
       color: #e0e0e0;
       overflow-x: hidden;
       position: relative;
+      height: 100vh;
+    }
+
+    /* Фоновое видео */
+    #background-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1; /* Видео будет находиться на заднем плане */
     }
 
     body.hide-cursor * {
@@ -108,6 +120,7 @@
       background-color: #1a1a1a;
       position: relative;
       z-index: 4;
+      color: #000; /* Изменено на черный цвет текста */
     }
 
     h1 {
@@ -170,6 +183,12 @@
   </style>
 </head>
 <body>
+
+  <!-- Видео фона -->
+  <video id="background-video" autoplay loop muted playsinline>
+    <source src="https://github.com/OOUPSS/The-Raven/blob/main/files/0329(3).mp4" type="video/mp4">
+    Ваш браузер не поддерживает видео.
+  </video>
 
   <!-- Видео интро -->
   <div id="intro-container">

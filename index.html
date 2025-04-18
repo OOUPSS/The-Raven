@@ -17,18 +17,6 @@
       color: #e0e0e0;
       overflow-x: hidden;
       position: relative;
-      height: 100vh;
-    }
-
-    /* Фоновое видео */
-    #background-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -1; /* Видео будет находиться на заднем плане */
     }
 
     body.hide-cursor * {
@@ -114,24 +102,35 @@
       z-index: 10000;
     }
 
+    /* Фоновое видео */
+    #background-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.2;
+      pointer-events: none;
+    }
+
     header {
       text-align: center;
       padding: 2rem 1rem;
-      background-color: #1a1a1a;
+      background-color: #000;
       position: relative;
       z-index: 4;
-      color: #000; /* Текст станет черным */
     }
 
     h1 {
       font-size: 2.5rem;
       margin: 0.2rem 0;
-      color: #000; /* Заголовок будет черным */
     }
 
     p.tagline {
       font-style: italic;
-      color: #000; /* Подзаголовок также черный */
+      color: #a0a0a0;
     }
 
     .badges {
@@ -185,12 +184,6 @@
 </head>
 <body>
 
-  <!-- Видео фона -->
-  <video id="background-video" autoplay loop muted playsinline>
-    <source src="https://github.com/OOUPSS/The-Raven/blob/main/files/0329(3).mp4" type="video/mp4">
-    Ваш браузер не поддерживает видео.
-  </video>
-
   <!-- Видео интро -->
   <div id="intro-container">
     <video id="intro-video" playsinline>
@@ -204,6 +197,11 @@
     <div class="spotlight" id="light"></div>
     <img id="torch" src="https://ooupss.github.io/The-Raven/files/torch.png" alt="Torch" />
   </div>
+
+  <!-- Фоновое видео -->
+  <video autoplay muted loop id="background-video">
+    <source src="https://ooupss.github.io/The-Raven/files/0329(3).mp4" type="video/mp4">
+  </video>
 
   <!-- Контент -->
   <header>

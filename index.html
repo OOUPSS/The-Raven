@@ -10,10 +10,6 @@
       src: url('https://ooupss.github.io/The-Raven/files/Triodion-Regular.ttf') format('truetype');
     }
 
-    * {
-      cursor: none !important;
-    }
-
     body {
       margin: 0;
       font-family: 'Triodion', serif;
@@ -21,6 +17,10 @@
       color: #e0e0e0;
       overflow-x: hidden;
       position: relative;
+    }
+
+    body.hide-cursor * {
+      cursor: none !important;
     }
 
     #intro-container {
@@ -51,6 +51,7 @@
       border: 2px solid #f0e6d2;
       border-radius: 8px;
       transition: background-color 0.3s;
+      cursor: pointer;
     }
 
     #start-btn:hover {
@@ -68,6 +69,7 @@
       font-size: 14px;
       z-index: 10000;
       transition: background-color 0.3s;
+      cursor: pointer;
     }
 
     .lang-toggle:hover {
@@ -309,6 +311,7 @@
 
     video.addEventListener('ended', () => {
       container.style.display = 'none';
+      document.body.classList.add('hide-cursor');
       document.querySelector('.cursor-layers').style.display = 'block';
     });
 

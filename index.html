@@ -82,6 +82,7 @@
       height: 100vh;
       pointer-events: none;
       z-index: 9999;
+      display: none;
     }
 
     .spotlight {
@@ -308,6 +309,7 @@
 
     video.addEventListener('ended', () => {
       container.style.display = 'none';
+      document.querySelector('.cursor-layers').style.display = 'block';
     });
 
     function toggleLanguage() {

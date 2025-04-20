@@ -123,8 +123,18 @@
       transform: translate(-50%, -50%);
       pointer-events: none;
       z-index: 10000;
+      animation: torch-move 0.15s infinite ease-in-out alternate;
     }
-
+    
+    @keyframes torch-move {
+      0% {
+         transform: translate(-50%, -50%) rotate(-1deg);
+        } 
+        100% {
+         transform: translate(-50%, -50%) rotate(1deg);
+         }
+       }
+          
     #background-video {
       position: fixed;
       top: 0;

@@ -239,16 +239,16 @@
   </section>
 
   <section>
-    <h2>🛠️ Технологии / Technologies</h2>
+    <h2>🛠️ Технологии</h2>
     <ul>
-      <li>Ren'Py — движок визуальных новелл / visual novel engine</li>
-      <li>CapCut + AI — синематик сцены с озвучкой / cinematics & voiceover</li>
-      <li>GitHub Pages — демо и портфолио / (soon) demo & portfolio</li>
+      <li>Ren'Py — движок визуальных новелл</li>
+      <li>CapCut + AI — синематик сцены с озвучкой</li>
+      <li>GitHub Pages — демо и портфолио</li>
     </ul>
   </section>
 
   <section>
-    <h2>🧾 Лицензия / License</h2>
+    <h2>🧾 Лицензия</h2>
     <p>
       Этот проект распространяется под лицензией <a href="https://creativecommons.org/licenses/by-nc/4.0" target="_blank">Creative Commons Attribution-NonCommercial 4.0 International</a>.<br>
       Вы можете копировать, перерабатывать и распространять материалы в некоммерческих целях, при условии указания авторства.
@@ -260,29 +260,29 @@
   </section>
 
   <section>
-    <h2>📅 Дорожная карта / Roadmap</h2>
+    <h2>📅 Дорожная карта</h2>
     <ul>
-      <li>✅ Идея и концепт / Idea & concept</li>
-      <li>✅ Прототип / Prototype</li>
-      <li>🔄 Разработка демо-версии / Demo in progress</li>
-      <li>⏳ Озвучка и катсцены / Voiceover & cutscenes</li>
-      <li>🔜 Первый публичный билд / First public build (soon)</li>
-      <li>🌟 Публикация / Release</li>
+      <li>✅ Идея и концепт</li>
+      <li>✅ Прототип</li>
+      <li>🔄 Разработка демо-версии</li>
+      <li>⏳ Озвучка и катсцены</li>
+      <li>🔜 Первый публичный билд</li>
+      <li>🌟 Публикация</li>
     </ul>
   </section>
 
   <section>
-    <h2>🤝 Команда / Team</h2>
+    <h2>Команда</h2>
     <ul>
-      <li>👤 Сценарий / Story: RavenCorp</li>
-      <li>👤 Дизайн / Design: DarkFeather</li>
-      <li>👤 Программирование / Code: Owlbyte</li>
-      <li>👤 Арт и UI / Art & UI: NoctisDraws</li>
+      <li>👤 Сценарий: RavenCorp</li>
+      <li>👤 Дизайн: DarkFeather</li>
+      <li>👤 Программирование: Owlbyte</li>
+      <li>👤 Арт и UI: NoctisDraws</li>
     </ul>
   </section>
 
   <section>
-    <h2>📬 Контакты / Contacts</h2>
+    <h2>📬 Контакты</h2>
     <p>📧 Email: dragoyar2005@gmail.com</p>
     <p>🐦 Twitter / X: <a href="https://twitter.com/TheRavenVN" target="_blank">@TheRavenVN</a></p>
     <p>💬 Discord: <a href="https://discord.gg/example" target="_blank">discord.gg/example</a></p>
@@ -332,25 +332,28 @@
       video.volume = 1;
       video.play();
       btn.style.display = 'none';
+      container.style.display = 'none';
     });
 
-    video.addEventListener('ended', () => {
-      container.style.display = 'none';
-      setTimeout(() => {
-        document.body.classList.add('hide-cursor');
-        document.querySelector('.cursor-layers').style.display = 'block';
-      }, 100);
+    langToggle.addEventListener('click', () => {
+      currentLang = currentLang === 'en' ? 'ru' : 'en';
+      updateLanguage();
     });
+
+    function updateLanguage() {
+      document.querySelector('[data-lang="welcome"]').textContent = translations[currentLang].welcome;
+      document.querySelector('[data-lang="tagline"]').textContent = translations[currentLang].tagline;
+      document.querySelector('[data-lang="about-title"]').textContent = translations[currentLang].aboutTitle;
+      document.querySelector('[data-lang="about-text"]').textContent = translations[currentLang].aboutText;
+      langToggle.textContent = currentLang === 'en' ? '🌐 RU' : '🌐 EN';
+    }
 
     function toggleLanguage() {
       currentLang = currentLang === 'en' ? 'ru' : 'en';
-      langToggle.textContent = currentLang === 'en' ? '🌐 EN' : '🌐 RU';
-
-      document.querySelector('[data-lang="tagline"]').textContent = translations[currentLang].tagline;
-      document.querySelector('[data-lang="welcome"]').textContent = translations[currentLang].welcome;
-      document.querySelector('[data-lang="about-title"]').textContent = translations[currentLang].aboutTitle;
-      document.querySelector('[data-lang="about-text"]').textContent = translations[currentLang].aboutText;
+      updateLanguage();
     }
+
+    updateLanguage(); // Инициализируем перевод
   </script>
 
 </body>

@@ -9,206 +9,43 @@
       font-family: 'Triodion';
       src: url('https://ooupss.github.io/The-Raven/files/Triodion-Regular.ttf') format('truetype');
     }
-
-    body {
-      margin: 0;
-      font-family: 'Triodion', serif;
-      background-color: #000;
-      color: #e0e0e0;
-      overflow-x: hidden;
-      position: relative;
-    }
-
-    body.hide-cursor,
-    body.hide-cursor *,
-    body.hide-cursor a,
-    body.hide-cursor button,
-    body.hide-cursor input,
-    body.hide-cursor textarea,
-    body.hide-cursor select,
-    body.hide-cursor [role="button"],
-    body.hide-cursor .lang-toggle,
-    body.hide-cursor #start-btn {
-      cursor: none !important;
-    }
-
-    #intro-container {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background-color: black;
-      z-index: 9999;
-    }
-
-    #intro-video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    #start-btn {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: #f0e6d2;
-      font-size: 2rem;
-      font-family: 'Triodion', serif;
-      background: rgba(0, 0, 0, 0.5);
-      padding: 1rem 2rem;
-      z-index: 10000;
-      border: 2px solid #f0e6d2;
-      border-radius: 8px;
-      transition: background-color 0.3s;
-      cursor: pointer;
-    }
-
-    #start-btn:hover {
-      background-color: rgba(0, 0, 0, 0.8);
-    }
-
-    .lang-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background-color: #222;
-      color: #fff;
-      padding: 8px 12px;
-      border-radius: 8px;
-      font-size: 14px;
-      z-index: 10000;
-      transition: background-color 0.3s;
-      cursor: pointer;
-    }
-
-    .lang-toggle:hover {
-      background-color: #444;
-    }
-
-    .cursor-layers {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-      z-index: 9999;
-      display: none;
-    }
-
-    .spotlight {
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255,255,200,0.1) 0%, rgba(0,0,0,0.95) 200px);
-      transition: background-position 0.05s ease;
-    }
-
-    #torch {
-      position: fixed;
-      width: 64px;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-      z-index: 10000;
-    }
-
-    #background-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      z-index: -1;
-      opacity: 1;
-      pointer-events: none;
-    }
-
-    header {
-      text-align: center;
-      padding: 2rem 1rem;
-      background-color: #000;
-      position: relative;
-      z-index: 4;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      margin: 0.2rem 0;
-    }
-
-    p.tagline {
-      font-style: italic;
-      color: #a0a0a0;
-    }
-
-    .badges {
-      margin: 1rem 0;
-    }
-
-    .badges img {
-      margin: 0 0.3rem;
-    }
-
-    section {
-      max-width: 960px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-      position: relative;
-      z-index: 4;
-    }
-
-    section::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.6); /* Полупрозрачная тёмная подложка */
-      z-index: -1;
-      pointer-events: none;
-    }
-
-    h2 {
-      border-bottom: 1px solid #444;
-      padding-bottom: 0.5rem;
-    }
-
-    .screenshots {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .screenshots div {
-      background-color: #1e1e1e;
-      height: 135px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #888;
-      border: 1px dashed #444;
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      background-color: #1a1a1a;
-      color: #777;
-      position: relative;
-      z-index: 4;
-    }
+    body { margin: 0; font-family: 'Triodion', serif; background: #000; color: #e0e0e0; overflow-x: hidden; }
+    body.hide-cursor, body.hide-cursor * { cursor: none !important; }
+    #intro-container { position: fixed; top:0; left:0; width:100vw; height:100vh; background:#000; z-index:9999; }
+    #intro-video { width:100%; height:100%; object-fit:cover; }
+    #start-btn { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:#f0e6d2; font-size:2rem;
+      background:rgba(0,0,0,0.5); padding:1rem 2rem; border:2px solid #f0e6d2; border-radius:8px; cursor:pointer; z-index:10000;
+      transition:background-color .3s; }
+    #start-btn:hover { background:rgba(0,0,0,0.8); }
+    .lang-toggle { position:fixed; top:20px; right:20px; background:#222; color:#fff; padding:8px 12px; border-radius:8px;
+      font-size:14px; cursor:pointer; z-index:10000; transition:background .3s; }
+    .lang-toggle:hover { background:#444; }
+    .cursor-layers { position:fixed; top:0; left:0; width:100vw; height:100vh; pointer-events:none; display:none; z-index:9999; }
+    .spotlight { width:100%; height:100%; background:radial-gradient(circle at var(--x,50%) var(--y,50%), rgba(255,255,200,0.1) 0%, rgba(0,0,0,0.95) 200px);
+      transition:background-position .05s ease; }
+    #torch { position:fixed; width:64px; transform:translate(-50%,-50%); pointer-events:none; z-index:10000; }
+    #background-video { position:fixed; top:0; left:0; width:100vw; height:100vh; object-fit:cover; z-index:-1; opacity:1; pointer-events:none; }
+    header { text-align:center; padding:2rem 1rem; background:#000; position:relative; z-index:4; }
+    h1 { font-size:2.5rem; margin:.2rem 0; }
+    p.tagline { font-style:italic; color:#a0a0a0; }
+    .badges { margin:1rem 0; }
+    .badges img { margin:0 0.3rem; }
+    section { max-width:960px; margin:2rem auto; padding:0 1rem; position:relative; z-index:4; }
+    section::before { content:""; position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6);
+      z-index:-1; pointer-events:none; }
+    h2 { border-bottom:1px solid #444; padding-bottom:.5rem; }
+    .screenshots { display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:1rem; margin-top:1rem; }
+    .screenshots div { background:#1e1e1e; height:135px; display:flex; align-items:center; justify-content:center;
+      color:#888; border:1px dashed #444; }
+    footer { text-align:center; padding:2rem; font-size:.9rem; background:#1a1a1a; color:#777; position:relative; z-index:4; }
   </style>
 </head>
 <body>
-
   <div id="intro-container">
-    <video id="intro-video" playsinline>
+    <video id="intro-video" autoplay muted playsinline>
       <source src="https://ooupss.github.io/The-Raven/files/Welcome%20to%20The%20Raven.mp4" type="video/mp4">
     </video>
-    <div id="start-btn" data-lang="welcome">Click to Enter</div>
+    <div id="start-btn" data-lang="welcome">Нажмите, чтобы войти</div>
   </div>
 
   <div class="cursor-layers">
@@ -221,8 +58,8 @@
   </video>
 
   <header>
-    <h1>The Raven</h1>
-    <p class="tagline" data-lang="tagline">"In the darkness of the past lies something that should have never been found."</p>
+    <h1 data-lang="title">The Raven</h1>
+    <p class="tagline" data-lang="tagline">"В темноте прошлого прячется то, что не должно было быть найдено."</p>
     <div class="badges">
       <img src="https://img.shields.io/badge/status-in_development-orange" alt="status">
       <img src="https://img.shields.io/badge/license-CC_BY--NC_4.0-blue" alt="license">
@@ -231,136 +68,198 @@
   </header>
 
   <section>
-    <h2 data-lang="about-title">About the Project</h2>
-    <p data-lang="about-text">
-      303-й год Эры Исчезновения Магии. Группа наёмников отправляется на задание,
-      не подозревая, что пробудит древнюю силу, погребённую под землёй...
-    </p>
+    <h2 data-lang="about-title">О проекте</h2>
+    <p data-lang="about-text">303-й год Эры Исчезновения Магии. Группа наёмников отправляется на задание, не подозревая, что пробудит древнюю силу, погребённую под землёй...</p>
   </section>
 
   <section>
-    <h2>Screenshots</h2>
+    <h2 data-lang="screenshots-title">Скриншоты</h2>
     <div class="screenshots">
-      <div>Scene Placeholder 1</div>
-      <div>Scene Placeholder 2</div>
-      <div>Scene Placeholder 3</div>
+      <div data-lang="ss1">Сцена 1</div>
+      <div data-lang="ss2">Сцена 2</div>
+      <div data-lang="ss3">Сцена 3</div>
     </div>
   </section>
 
   <section>
-    <h2>🛠️ Технологии / Technologies</h2>
+    <h2 data-lang="tech-title">🛠️ Технологии</h2>
     <ul>
-      <li>Ren'Py — движок визуальных новелл / visual novel engine</li>
-      <li>CapCut + AI — синематик сцены с озвучкой / cinematics & voiceover</li>
-      <li>GitHub Pages — демо и портфолио / (soon) demo & portfolio</li>
+      <li data-lang="tech-renpy">Ren'Py — движок визуальных новелл</li>
+      <li data-lang="tech-capcut">CapCut + AI — синематик сцены с озвучкой</li>
+      <li data-lang="tech-github">GitHub Pages — демо и портфолио</li>
     </ul>
   </section>
 
   <section>
-    <h2>🧾 Лицензия / License</h2>
-    <p>
-      Этот проект распространяется под лицензией <a href="https://creativecommons.org/licenses/by-nc/4.0" target="_blank">Creative Commons Attribution-NonCommercial 4.0 International</a>.<br>
-      Вы можете копировать, перерабатывать и распространять материалы в некоммерческих целях, при условии указания авторства.
-    </p>
-    <p>
-      This work is licensed under the <a href="https://creativecommons.org/licenses/by-nc/4.0" target="_blank">Creative Commons Attribution-NonCommercial 4.0 International License</a>.<br>
-      You may share and adapt the material for non-commercial purposes, with proper credit.
-    </p>
+    <h2 data-lang="license-title">🧾 Лицензия</h2>
+    <p data-lang="license-text1">Этот проект распространяется под лицензией Creative Commons Attribution-NonCommercial 4.0 International.</p>
+    <p data-lang="license-text2">You may share and adapt the material for non-commercial purposes, with proper credit.</p>
   </section>
 
   <section>
-    <h2>📅 Дорожная карта / Roadmap</h2>
+    <h2 data-lang="roadmap-title">📅 Дорожная карта</h2>
     <ul>
-      <li>✅ Идея и концепт / Idea & concept</li>
-      <li>✅ Прототип / Prototype</li>
-      <li>🔄 Разработка демо-версии / Demo in progress</li>
-      <li>⏳ Озвучка и катсцены / Voiceover & cutscenes</li>
-      <li>🔜 Первый публичный билд / First public build (soon)</li>
-      <li>🌟 Публикация / Release</li>
+      <li data-lang="rm1">✅ Идея и концепт / Idea & concept</li>
+      <li data-lang="rm2">✅ Прототип / Prototype</li>
+      <li data-lang="rm3">🔄 Разработка демо-версии / Demo in progress</li>
+      <li data-lang="rm4">⏳ Озвучка и катсцены / Voiceover & cutscenes</li>
+      <li data-lang="rm5">🔜 Первый публичный билд / First public build</li>
+      <li data-lang="rm6">🌟 Публикация / Release</li>
     </ul>
   </section>
 
   <section>
-    <h2>🤝 Команда / Team</h2>
+    <h2 data-lang="team-title">🤝 Команда</h2>
     <ul>
-      <li>👤 Сценарий / Story: RavenCorp</li>
-      <li>👤 Дизайн / Design: DarkFeather</li>
-      <li>👤 Программирование / Code: Owlbyte</li>
-      <li>👤 Арт и UI / Art & UI: NoctisDraws</li>
+      <li data-lang="tm1">Сценарий: RavenCorp / Story: RavenCorp</li>
+      <li data-lang="tm2">Дизайн: DarkFeather / Design: DarkFeather</li>
+      <li data-lang="tm3">Программирование: Owlbyte / Code: Owlbyte</li>
+      <li data-lang="tm4">Арт и UI: NoctisDraws / Art & UI: NoctisDraws</li>
     </ul>
   </section>
 
   <section>
-    <h2>📬 Контакты / Contacts</h2>
-    <p>📧 Email: theravenproject@proton.me</p>
-    <p>🐦 Twitter / X: <a href="https://twitter.com/TheRavenVN" target="_blank">@TheRavenVN</a></p>
-    <p>💬 Discord: <a href="https://discord.gg/example" target="_blank">discord.gg/example</a></p>
+    <h2 data-lang="contacts-title">📬 Контакты</h2>
+    <p data-lang="contacts-email">Email: theravenproject@proton.me</p>
+    <p data-lang="contacts-twitter">Twitter: @TheRavenVN</p>
+    <p data-lang="contacts-discord">Discord: discord.gg/example</p>
   </section>
 
   <footer>
-    &copy; All rights reserved. The Copchik is watching 👁
+    <p>&copy; All rights reserved. The Copchik is watching 👁</p>
   </footer>
 
   <div class="lang-toggle" onclick="toggleLanguage()">🌐 EN</div>
 
   <script>
-    const spotlight = document.getElementById('light');
-    const torch = document.getElementById('torch');
-    const video = document.getElementById('intro-video');
-    const btn = document.getElementById('start-btn');
-    const container = document.getElementById('intro-container');
-    const langToggle = document.querySelector('.lang-toggle');
-
-    let currentLang = 'en';
-
+    const elements = {
+      welcome: document.querySelector('#start-btn'),
+      title: document.querySelector('[data-lang="title"]'),
+      tagline: document.querySelector('[data-lang="tagline"]'),
+      'about-title': document.querySelector('[data-lang="about-title"]'),
+      'about-text': document.querySelector('[data-lang="about-text"]'),
+      'screenshots-title': document.querySelector('[data-lang="screenshots-title"]'),
+      ss1: document.querySelector('[data-lang="ss1"]'),
+      ss2: document.querySelector('[data-lang="ss2"]'),
+      ss3: document.querySelector('[data-lang="ss3"]'),
+      'tech-title': document.querySelector('[data-lang="tech-title"]'),
+      'tech-renpy': document.querySelector('[data-lang="tech-renpy"]'),
+      'tech-capcut': document.querySelector('[data-lang="tech-capcut"]'),
+      'tech-github': document.querySelector('[data-lang="tech-github"]'),
+      'license-title': document.querySelector('[data-lang="license-title"]'),
+      'license-text1': document.querySelector('[data-lang="license-text1"]'),
+      'license-text2': document.querySelector('[data-lang="license-text2"]'),
+      'roadmap-title': document.querySelector('[data-lang="roadmap-title"]'),
+      rm1: document.querySelector('[data-lang="rm1"]'),
+      rm2: document.querySelector('[data-lang="rm2"]'),
+      rm3: document.querySelector('[data-lang="rm3"]'),
+      rm4: document.querySelector('[data-lang="rm4"]'),
+      rm5: document.querySelector('[data-lang="rm5"]'),
+      rm6: document.querySelector('[data-lang="rm6"]'),
+      'team-title': document.querySelector('[data-lang="team-title"]'),
+      tm1: document.querySelector('[data-lang="tm1"]'),
+      tm2: document.querySelector('[data-lang="tm2"]'),
+      tm3: document.querySelector('[data-lang="tm3"]'),
+      tm4: document.querySelector('[data-lang="tm4"]'),
+      'contacts-title': document.querySelector('[data-lang="contacts-title"]'),
+      'contacts-email': document.querySelector('[data-lang="contacts-email"]'),
+      'contacts-twitter': document.querySelector('[data-lang="contacts-twitter"]'),
+      'contacts-discord': document.querySelector('[data-lang="contacts-discord"]')
+    };
+    let lang = 'ru';
     const translations = {
       en: {
-        welcome: "Click to Enter",
+        welcome: 'Click to Enter',
+        title: 'The Raven',
         tagline: '"In the darkness of the past lies something that should have never been found."',
-        aboutTitle: "About the Project",
-        aboutText: "Year 303 of the Era of Magic's Disappearance. A group of mercenaries embarks on a mission, unaware they will awaken an ancient force buried beneath the earth..."
+        'about-title': 'About the Project',
+        'about-text': 'Year 303 of the Era of Magic\'s Disappearance. A group of mercenaries embarks on a mission, unaware they will awaken an ancient force buried beneath the earth...',
+        'screenshots-title': 'Screenshots',
+        ss1: 'Scene Placeholder 1',
+        ss2: 'Scene Placeholder 2',
+        ss3: 'Scene Placeholder 3',
+        'tech-title': '🛠️ Technologies',
+        'tech-renpy': "Ren'Py — visual novel engine",
+        'tech-capcut': 'CapCut + AI — cinematics & voiceover',
+        'tech-github': 'GitHub Pages — demo & portfolio',
+        'license-title': '🧾 License',
+        'license-text1': 'This project is licensed under Creative Commons Attribution-NonCommercial 4.0 International.',
+        'license-text2': 'You may share and adapt the material for non-commercial purposes, with proper credit.',
+        'roadmap-title': '📅 Roadmap',
+        rm1: '✅ Idea & concept',
+        rm2: '✅ Prototype',
+        rm3: '🔄 Demo in progress',
+        rm4: '⏳ Voiceover & cutscenes',
+        rm5: '🔜 First public build',
+        rm6: '🌟 Release',
+        'team-title': '🤝 Team',
+        tm1: 'Story: RavenCorp',
+        tm2: 'Design: DarkFeather',
+        tm3: 'Code: Owlbyte',
+        tm4: 'Art & UI: NoctisDraws',
+        'contacts-title': '📬 Contacts',
+        'contacts-email': 'Email: theravenproject@proton.me',
+        'contacts-twitter': 'Twitter: @TheRavenVN',
+        'contacts-discord': 'Discord: discord.gg/example'
       },
       ru: {
-        welcome: "Нажмите, чтобы войти",
+        welcome: 'Нажмите, чтобы войти',
+        title: 'The Raven',
         tagline: '"В темноте прошлого прячется то, что не должно было быть найдено."',
-        aboutTitle: "О проекте",
-        aboutText: "303-й год Эры Исчезновения Магии. Группа наёмников отправляется на задание, не подозревая, что пробудит древнюю силу, погребённую под землёй..."
+        'about-title': 'О проекте',
+        'about-text': '303-й год Эры Исчезновения Магии. Группа наёмников отправляется на задание, не подозревая, что пробудит древнюю силу, погребённую под землёй...',
+        'screenshots-title': 'Скриншоты',
+        ss1: 'Сцена 1',
+        ss2: 'Сцена 2',
+        ss3: 'Сцена 3',
+        'tech-title': '🛠️ Технологии',
+        'tech-renpy': "Ren'Py — движок визуальных новелл",
+        'tech-capcut': 'CapCut + AI — синематик сцены с озвучкой',
+        'tech-github': 'GitHub Pages — демо и портфолио',
+        'license-title': '🧾 Лицензия',
+        'license-text1': 'Этот проект распространяется под лицензией Creative Commons Attribution-NonCommercial 4.0 International.',
+        'license-text2': 'Вы можете копировать, перерабатывать и распространять материалы в некоммерческих целях, при условии указания авторства.',
+        'roadmap-title': '📅 Дорожная карта',
+        rm1: '✅ Идея и концепт',
+        rm2: '✅ Прототип',
+        rm3: '🔄 Разработка демо-версии',
+        rm4: '⏳ Озвучка и катсцены',
+        rm5: '🔜 Первый публичный билд',
+        rm6: '🌟 Публикация',
+        'team-title': '🤝 Команда',
+        tm1: 'Сценарий: RavenCorp',
+        tm2: 'Дизайн: DarkFeather',
+        tm3: 'Программирование: Owlbyte',
+        tm4: 'Арт и UI: NoctisDraws',
+        'contacts-title': '📬 Контакты',
+        'contacts-email': 'Email: theravenproject@proton.me',
+        'contacts-twitter': 'Twitter: @TheRavenVN',
+        'contacts-discord': 'Discord: discord.gg/example'
       }
     };
-
-    document.addEventListener('mousemove', (e) => {
-      const x = e.clientX;
-      const y = e.clientY;
-      spotlight.style.setProperty('--x', `${x}px`);
-      spotlight.style.setProperty('--y', `${y}px`);
-      torch.style.left = `${x}px`;
-      torch.style.top = `${y}px`;
-    });
-
-    btn.addEventListener('click', () => {
-      video.volume = 1;
-      video.play();
-      btn.style.display = 'none';
-    });
-
-    video.addEventListener('ended', () => {
-      container.style.display = 'none';
-      setTimeout(() => {
-        document.body.classList.add('hide-cursor');
-        document.querySelector('.cursor-layers').style.display = 'block';
-      }, 100);
-    });
-
     function toggleLanguage() {
-      currentLang = currentLang === 'en' ? 'ru' : 'en';
-      langToggle.textContent = currentLang === 'en' ? '🌐 EN' : '🌐 RU';
-
-      document.querySelector('[data-lang="tagline"]').textContent = translations[currentLang].tagline;
-      document.querySelector('[data-lang="welcome"]').textContent = translations[currentLang].welcome;
-      document.querySelector('[data-lang="about-title"]').textContent = translations[currentLang].aboutTitle;
-      document.querySelector('[data-lang="about-text"]').textContent = translations[currentLang].aboutText;
+      lang = (lang === 'ru') ? 'en' : 'ru';
+      document.querySelector('.lang-toggle').textContent = (lang === 'ru') ? '🌐 EN' : '🌐 RU';
+      for (const key in elements) {
+        elements[key].textContent = translations[lang][key];
+      }
+      if (lang === 'en') document.querySelector('html').lang = 'en';
+      else document.querySelector('html').lang = 'ru';
     }
-  </script>
 
+    document.addEventListener('mousemove', e => {
+      document.getElementById('light').style.setProperty('--x', e.clientX + 'px');
+      document.getElementById('light').style.setProperty('--y', e.clientY + 'px');
+      document.getElementById('torch').style.left = e.clientX + 'px';
+      document.getElementById('torch').style.top = e.clientY + 'px';
+    });
+
+    document.getElementById('start-btn').addEventListener('click', () => {
+      const vid = document.getElementById('intro-video');
+      vid.volume = 1; vid.play();
+      document.getElementById('intro-container').style.display = 'none';
+      setTimeout(() => document.body.classList.add('hide-cursor'), 100);
+    });
+  </script>
 </body>
 </html>

@@ -19,7 +19,16 @@
       position: relative;
     }
 
-    body.hide-cursor * {
+    body.hide-cursor,
+    body.hide-cursor *,
+    body.hide-cursor a,
+    body.hide-cursor button,
+    body.hide-cursor input,
+    body.hide-cursor textarea,
+    body.hide-cursor select,
+    body.hide-cursor [role="button"],
+    body.hide-cursor .lang-toggle,
+    body.hide-cursor #start-btn {
       cursor: none !important;
     }
 
@@ -102,7 +111,6 @@
       z-index: 10000;
     }
 
-    /* Фоновое видео */
     #background-video {
       position: fixed;
       top: 0;
@@ -184,7 +192,6 @@
 </head>
 <body>
 
-  <!-- Видео интро -->
   <div id="intro-container">
     <video id="intro-video" playsinline>
       <source src="https://ooupss.github.io/The-Raven/files/Welcome%20to%20The%20Raven.mp4" type="video/mp4">
@@ -192,18 +199,15 @@
     <div id="start-btn" data-lang="welcome">Click to Enter</div>
   </div>
 
-  <!-- Факел и свет -->
   <div class="cursor-layers">
     <div class="spotlight" id="light"></div>
     <img id="torch" src="https://ooupss.github.io/The-Raven/files/torch.png" alt="Torch" />
   </div>
 
-  <!-- Фоновое видео -->
   <video autoplay muted loop id="background-video">
     <source src="https://ooupss.github.io/The-Raven/files/0329(3).mp4" type="video/mp4">
   </video>
 
-  <!-- Контент -->
   <header>
     <h1>The Raven</h1>
     <p class="tagline" data-lang="tagline">"In the darkness of the past lies something that should have never been found."</p>
@@ -329,8 +333,10 @@
 
     video.addEventListener('ended', () => {
       container.style.display = 'none';
-      document.body.classList.add('hide-cursor');
-      document.querySelector('.cursor-layers').style.display = 'block';
+      setTimeout(() => {
+        document.body.classList.add('hide-cursor');
+        document.querySelector('.cursor-layers').style.display = 'block';
+      }, 100);
     });
 
     function toggleLanguage() {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -233,11 +233,12 @@
   <section>
     <h2 data-lang="about-title">About the Project</h2>
     <p data-lang="about-text">
-      303-й год Эры Исчезновения Магии. Группа наёмников отправляется на задание,
-      не подозревая, что пробудит древнюю силу, погребённую под землёй...
-    </p>
-    <p data-lang="about-text-en">
-      The year 303 of the Era of Magic's Disappearance. A group of mercenaries embarks on a mission, unaware they will awaken an ancient force buried beneath the earth...
+      303rd year of the Era of Magic's Disappearance on the planet Corvus.<br>
+      Once, magic was an inseparable part of life. It flowed through the veins of this world, supporting its harmony and developing everything around. Great wizards ruled, miracles were everyday occurrences, and ancient spells left traces in every corner of Corvus. But over time, magic began to fade. At first, it was barely noticeable: small disruptions, weakening powerful spells, the disappearance of rare creatures. Then the wizards themselves disappeared, and powerful artifacts began to dull and lose their power.<br><br>
+
+      Now magic has become nothing but a myth. Everyone forgot what it looked like, how it was used, and what happened to it. Only a few retained echoes of its power, but even these memories are starting to fade. Those who dare seek answers wander through the dungeons of ancient temples, where darkness has swallowed even the oldest traces.<br><br>
+
+      But in the darkest corners of the world, in the depths of ruined sanctuaries, something is hidden that could restore magic — or become its final, destructive surge, capable of forever changing the fate of the world.
     </p>
   </section>
 
@@ -253,7 +254,7 @@
   <section>
     <h2>🛠️ Технологии / Technologies</h2>
     <ul>
-      <li>Ren'Py — движок визуальных новелл / visual novel engine</li>
+      <li>Ren'Py — визуальная новелла / visual novel engine</li>
       <li>CapCut + AI — синематик сцены с озвучкой / cinematics & voiceover</li>
       <li>GitHub Pages — демо и портфолио / (soon) demo & portfolio</li>
     </ul>
@@ -296,7 +297,7 @@
   <section>
     <h2>📬 Контакты / Contacts</h2>
     <p>📧 Email: dragoyar2005@gmail.com</p>
-    <p>📷 Instagram: <a href="https://www.instagram.com/oouuppss1/" target="_blank">@oouuppss1</a></p>
+    <p>📱 Instagram: <a href="https://instagram.com/oouuppss1" target="_blank">@oouuppss1</a></p>
   </section>
 
   <footer>
@@ -320,48 +321,41 @@
         welcome: "Click to Enter",
         tagline: '"In the darkness of the past lies something that should have never been found."',
         aboutTitle: "About the Project",
-        aboutText: "Year 303 of the Era of Magic's Disappearance. A group of mercenaries embarks on a mission, unaware they will awaken an ancient force buried beneath the earth..."
+        aboutText: "303rd year of the Era of Magic's Disappearance on the planet Corvus. Once, magic was an inseparable part of life. It flowed through the veins of this world, supporting its harmony and developing everything around. Great wizards ruled, miracles were everyday occurrences, and ancient spells left traces in every corner of Corvus. But over time, magic began to fade. At first, it was barely noticeable: small disruptions, weakening powerful spells, the disappearance of rare creatures. Then the wizards themselves disappeared, and powerful artifacts began to dull and lose their power.\n\nNow magic has become nothing but a myth. Everyone forgot what it looked like, how it was used, and what happened to it. Only a few retained echoes of its power, but even these memories are starting to fade. Those who dare seek answers wander through the dungeons of ancient temples, where darkness has swallowed even the oldest traces.\n\nBut in the darkest corners of the world, in the depths of ruined sanctuaries, something is hidden that could restore magic — or become its final, destructive surge, capable of forever changing the fate of the world."
       },
       ru: {
         welcome: "Нажмите, чтобы войти",
-        tagline: '"В темноте прошлого прячется то, что не должно было быть найдено."',
+        tagline: '"В тени прошлого скрывается нечто, что не должно было быть найдено."',
         aboutTitle: "О проекте",
-        aboutText: "303-й год Эры Исчезновения Магии. Группа наёмников отправляется на задание, не подозревая, что пробудит древнюю силу, погребённую под землёй..."
+        aboutText: "303-й год Эры Исчезновения Магии на планете Корвус. Когда-то магия была неотъемлемой частью жизни. Она текла в венах этого мира, поддерживая его гармонию и развивая всё вокруг. Великие маги правили, чудеса были повседневными, а древние заклинания оставляли следы в каждом уголке Корвуса. Но с течением времени магия стала исчезать. Поначалу это было незаметно: небольшие помехи, ослабление мощных заклинаний, исчезновение редких существ. Затем исчезли и сами маги, а могущественные артефакты начали тускнеть и терять силу.\n\nТеперь магия стала лишь мифом. Все забыли, как она выглядела, как её использовали и что с ней произошло. Лишь немногие сохранили отголоски её силы, но и эти воспоминания уже начинают тускнеть. Те, кто решаются искать ответы, блуждают в подземельях древних храмов, где тьма поглотила даже самые старые следы.\n\nНо в самых тёмных уголках мира, в глубинах разрушенных святилищ, скрыто нечто, что может вернуть магию — или стать её последним, разрушительным всплеском, способным навсегда изменить судьбу мира."
       }
     };
 
-    document.addEventListener('mousemove', (e) => {
-      const x = e.clientX;
-      const y = e.clientY;
-      spotlight.style.setProperty('--x', `${x}px`);
-      spotlight.style.setProperty('--y', `${y}px`);
-      torch.style.left = `${x}px`;
-      torch.style.top = `${y}px`;
-    });
+    const updateText = () => {
+      document.querySelectorAll('[data-lang]').forEach((element) => {
+        const key = element.getAttribute('data-lang');
+        element.textContent = translations[currentLang][key];
+      });
+
+      langToggle.textContent = currentLang === 'en' ? '🇷🇺 RU' : '🇬🇧 EN';
+    };
+
+    const toggleLanguage = () => {
+      currentLang = currentLang === 'en' ? 'ru' : 'en';
+      updateText();
+    };
 
     btn.addEventListener('click', () => {
-      video.volume = 1;
-      video.play();
-      btn.style.display = 'none';
-    });
-
-    video.addEventListener('ended', () => {
       container.style.display = 'none';
-      setTimeout(() => {
-        document.body.classList.add('hide-cursor');
-        document.querySelector('.cursor-layers').style.display = 'block';
-      }, 100);
+      document.body.classList.remove('hide-cursor');
     });
 
-    function toggleLanguage() {
-      currentLang = currentLang === 'en' ? 'ru' : 'en';
-      langToggle.textContent = currentLang === 'en' ? '🌐 EN' : '🌐 RU';
+    document.addEventListener('mousemove', (event) => {
+      spotlight.style.setProperty('--x', `${event.clientX}px`);
+      spotlight.style.setProperty('--y', `${event.clientY}px`);
+    });
 
-      document.querySelector('[data-lang="tagline"]').textContent = translations[currentLang].tagline;
-      document.querySelector('[data-lang="welcome"]').textContent = translations[currentLang].welcome;
-      document.querySelector('[data-lang="about-title"]').textContent = translations[currentLang].aboutTitle;
-      document.querySelector('[data-lang="about-text"]').textContent = translations[currentLang].aboutText;
-    }
+    updateText(); // Изначально обновим текст на английском
   </script>
 
 </body>

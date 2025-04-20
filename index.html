@@ -19,7 +19,6 @@
       position: relative;
     }
 
-    body.hide-cursor,
     body.hide-cursor * {
       cursor: none !important;
     }
@@ -69,12 +68,7 @@
       border-radius: 8px;
       font-size: 14px;
       z-index: 10000;
-      transition: background-color 0.3s;
       cursor: pointer;
-    }
-
-    .lang-toggle:hover {
-      background-color: #444;
     }
 
     .cursor-layers {
@@ -115,38 +109,16 @@
       pointer-events: none;
     }
 
-    header {
-      text-align: center;
-      padding: 2rem 1rem;
-      background-color: #000;
+    header, section, footer {
       position: relative;
       z-index: 4;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      margin: 0.2rem 0;
-    }
-
-    p.tagline {
-      font-style: italic;
-      color: #a0a0a0;
-    }
-
-    .badges {
-      margin: 1rem 0;
-    }
-
-    .badges img {
-      margin: 0 0.3rem;
+      text-align: center;
+      padding: 2rem 1rem;
     }
 
     section {
       max-width: 960px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-      position: relative;
-      z-index: 4;
+      margin: 0 auto;
     }
 
     section::before {
@@ -161,16 +133,20 @@
       pointer-events: none;
     }
 
-    h2 {
-      border-bottom: 1px solid #444;
-      padding-bottom: 0.5rem;
+    h1, h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
     }
 
     .screenshots {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 1rem;
-      margin-top: 1rem;
     }
 
     .screenshots div {
@@ -182,20 +158,9 @@
       color: #888;
       border: 1px dashed #444;
     }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      background-color: #1a1a1a;
-      color: #777;
-      position: relative;
-      z-index: 4;
-    }
   </style>
 </head>
 <body>
-
   <div id="intro-container">
     <video id="intro-video" playsinline>
       <source src="https://ooupss.github.io/The-Raven/files/Welcome%20to%20The%20Raven.mp4" type="video/mp4">
@@ -214,7 +179,7 @@
 
   <header>
     <h1>The Raven</h1>
-    <p class="tagline" data-lang="tagline">"In the darkness of the past lies something that should have never been found."</p>
+    <p class="tagline" data-lang="tagline"></p>
     <div class="badges">
       <img src="https://img.shields.io/badge/status-in_development-orange" alt="status">
       <img src="https://img.shields.io/badge/license-CC_BY--NC_4.0-blue" alt="license">
@@ -223,17 +188,12 @@
   </header>
 
   <section>
-    <h2 data-lang="about-title">О проекте</h2>
-    <p data-lang="about-text">
-      Шёл 303-й год Эры Исчезновения Магии на планете Корвус.<br><br>
-      Когда-то магия была неотъемлемой частью жизни. Она текла в венах этого мира, поддерживая его гармонию и развивая всё вокруг. Великие маги правили, чудеса были повседневными, а древние заклинания оставляли следы в каждом уголке Корвуса. Но с течением времени магия стала исчезать. Поначалу это было незаметно: небольшие помехи, ослабление мощных заклинаний, исчезновение редких существ. Затем исчезли и сами маги, а могущественные артефакты начали тускнеть и терять силу.<br><br>
-      Теперь магия стала лишь мифом. Все забыли, как она выглядела, как её использовали и что с ней произошло. Лишь немногие сохранили отголоски её силы, но и эти воспоминания уже начинают тускнеть. Те, кто решаются искать ответы, блуждают в подземельях древних храмов, где тьма поглотила даже самые старые следы.<br><br>
-      Но в самых тёмных уголках мира, в глубинах разрушенных святилищ, скрыто нечто, что может вернуть магию — или стать её последним, разрушительным всплеском, способным навсегда изменить судьбу мира.
-    </p>
+    <h2 data-lang="about-title"></h2>
+    <p data-lang="about-text"></p>
   </section>
 
   <section>
-    <h2>Screenshots</h2>
+    <h2 data-lang="screenshots">Screenshots</h2>
     <div class="screenshots">
       <div>Scene Placeholder 1</div>
       <div>Scene Placeholder 2</div>
@@ -242,42 +202,35 @@
   </section>
 
   <section>
-    <h2>🛠️ Технологии</h2>
+    <h2 data-lang="tech-title"></h2>
     <ul>
-      <li>Ren'Py — visual novel engine</li>
-      <li>CapCut + AI — cinematics & voiceover</li>
-      <li>GitHub Pages — (soon) demo & portfolio</li>
+      <li data-lang="tech-1"></li>
+      <li data-lang="tech-2"></li>
+      <li data-lang="tech-3"></li>
     </ul>
   </section>
 
   <section>
-    <h2>🧾 Лицензия</h2>
-    <p>
-      Этот проект распространяется под лицензией <a href="https://creativecommons.org/licenses/by-nc/4.0" target="_blank">Creative Commons Attribution-NonCommercial 4.0 International</a>.
-    </p>
-  </section>
-
-  <section>
-    <h2>📅 Дорожная карта</h2>
+    <h2 data-lang="roadmap-title"></h2>
     <ul>
-      <li>✅ Идея и концепт</li>
-      <li>✅ Прототип</li>
-      <li>🔄 Разработка демо-версии</li>
-      <li>⏳ Озвучка и катсцены</li>
-      <li>🔜 Первый публичный билд</li>
-      <li>🌟 Публикация</li>
+      <li data-lang="rm-1"></li>
+      <li data-lang="rm-2"></li>
+      <li data-lang="rm-3"></li>
+      <li data-lang="rm-4"></li>
+      <li data-lang="rm-5"></li>
+      <li data-lang="rm-6"></li>
     </ul>
   </section>
 
   <section>
-    <h2>🤝 Команда</h2>
-    <p>Проект разрабатывается одним человеком — от идеи до реализации.</p>
+    <h2 data-lang="team-title"></h2>
+    <p data-lang="team-desc"></p>
   </section>
 
   <section>
-    <h2>📬 Контакты</h2>
-    <p>📧 Email: dragoyar2005@gmail.com</p>
-    <p>📷 Instagram: <a href="https://instagram.com/oouuppss1" target="_blank">@oouuppss1</a></p>
+    <h2 data-lang="contacts-title"></h2>
+    <p data-lang="contact-email"></p>
+    <p data-lang="contact-ig"></p>
   </section>
 
   <footer>
@@ -287,53 +240,81 @@
   <div class="lang-toggle" onclick="toggleLanguage()">🌐 EN</div>
 
   <script>
-    const spotlight = document.getElementById('light');
-    const torch = document.getElementById('torch');
-    const video = document.getElementById('intro-video');
-    const btn = document.getElementById('start-btn');
-    const container = document.getElementById('intro-container');
-    const langToggle = document.querySelector('.lang-toggle');
-
-    let currentLang = 'en';
-
     const translations = {
-      en: {
-        welcome: "Click to Enter",
-        tagline: '"In the darkness of the past lies something that should have never been found."',
-        aboutTitle: "About the Project",
-        aboutText: `Year 303 of the Era of Magic's Disappearance on the planet Corvus.
-
-Magic was once an essential part of life. It flowed through the veins of the world, maintaining harmony and nurturing everything around it. Great mages ruled, wonders were common, and ancient spells left marks in every corner of Corvus. But over time, magic began to fade. At first, it was barely noticeable: minor glitches, weakening of powerful spells, disappearance of rare beings. Then the mages themselves vanished, and powerful artifacts started to dim and lose their power.
-
-Now, magic has become a myth. Everyone has forgotten what it looked like, how it was used, and what happened to it. Only a few retained echoes of its power — even those memories are fading. Those who seek answers wander the ruins of ancient temples, where darkness has consumed even the oldest traces.
-
-But in the darkest corners of the world, within the depths of broken sanctuaries, lies something that may return magic — or become its final, destructive burst capable of changing the fate of the world forever.`
-      },
       ru: {
         welcome: "Нажмите, чтобы войти",
-        tagline: '"В темноте прошлого прячется то, что не должно было быть найдено."',
+        tagline: "\"В темноте прошлого прячется то, что не должно было быть найдено.\"",
         aboutTitle: "О проекте",
-        aboutText: document.querySelector('[data-lang="about-text"]').innerHTML
+        aboutText: "Шёл 303-й год Эры Исчезновения Магии на планете Корвус. Когда-то магия была неотъемлемой частью жизни. Она текла в венах этого мира, поддерживая его гармонию и развивая всё вокруг. Великие маги правили, чудеса были повседневными, а древние заклинания оставляли следы в каждом уголке Корвуса. Но с течением времени, магия стала исчезать. Поначалу это было незаметно: небольшие помехи, ослабление мощных заклинаний, исчезновение редких существ. Затем исчезли и сами маги, а могущественные артефакты начали тускнеть и терять силу. Теперь магия стала лишь мифом. Все забыли, как она выглядела, как её использовали и что с ней произошло. Лишь немногие сохранили отголоски её силы, но и эти воспоминания уже начинают тускнеть. Те, кто решаются искать ответы, блуждают в подземельях древних храмов, где тьма поглотила даже самые старые следы. Но в самых тёмных уголках мира, в глубинах разрушенных святилищ, скрыто нечто, что может вернуть магию — или стать её последним, разрушительным всплеском, способным навсегда изменить судьбу мира.",
+        screenshots: "Скриншоты",
+        techTitle: "Технологии",
+        tech1: "Ren'Py — движок визуальных новелл",
+        tech2: "CapCut + AI — синематик сцены с озвучкой",
+        tech3: "GitHub Pages — демо и портфолио",
+        roadmapTitle: "Дорожная карта",
+        rm1: "✅ Идея и концепт",
+        rm2: "✅ Прототип",
+        rm3: "🔄 Разработка демо-версии",
+        rm4: "⏳ Озвучка и катсцены",
+        rm5: "🔜 Первый публичный билд",
+        rm6: "🌟 Публикация",
+        teamTitle: "Команда",
+        teamDesc: "Проект разрабатывается одним человеком.",
+        contactsTitle: "Контакты",
+        contactEmail: "📧 Почта: dragoyar2005@gmail.com",
+        contactIg: "📸 Instagram: @oouuppss1"
+      },
+      en: {
+        welcome: "Click to Enter",
+        tagline: "\"In the darkness of the past lies something that should have never been found.\"",
+        aboutTitle: "About the Project",
+        aboutText: "It was the year 303 of the Era of Magic's Disappearance on the planet Corvus. Once, magic was an integral part of life. It flowed through the veins of this world, maintaining its balance and helping everything flourish. Great mages ruled, miracles were commonplace, and ancient spells left their marks across every corner of Corvus. But over time, magic began to fade. At first, it was subtle: slight disruptions, weakened powerful spells, and vanishing rare creatures. Then the mages themselves disappeared, and powerful artifacts began to dim and lose their power. Now, magic is but a myth. People have forgotten what it looked like, how it was used, and what happened to it. Only a few remnants of its power remain, and even those memories are fading. Those who seek answers wander through the dungeons of ancient temples, where darkness has swallowed even the oldest traces. But in the darkest corners of the world, deep within ruined sanctuaries, something lies hidden that may bring magic back — or become its final, devastating surge that changes the fate of the world forever.",
+        screenshots: "Screenshots",
+        techTitle: "Technologies",
+        tech1: "Ren'Py — visual novel engine",
+        tech2: "CapCut + AI — cinematics & voiceover",
+        tech3: "GitHub Pages — demo & portfolio",
+        roadmapTitle: "Roadmap",
+        rm1: "✅ Idea & concept",
+        rm2: "✅ Prototype",
+        rm3: "🔄 Demo in progress",
+        rm4: "⏳ Voiceover & cutscenes",
+        rm5: "🔜 First public build",
+        rm6: "🌟 Release",
+        teamTitle: "Team",
+        teamDesc: "This project is developed by a solo creator.",
+        contactsTitle: "Contacts",
+        contactEmail: "📧 Email: dragoyar2005@gmail.com",
+        contactIg: "📸 Instagram: @oouuppss1"
       }
     };
 
-    document.addEventListener('mousemove', (e) => {
-      const x = e.clientX;
-      const y = e.clientY;
-      spotlight.style.setProperty('--x', `${x}px`);
-      spotlight.style.setProperty('--y', `${y}px`);
-      torch.style.left = `${x}px`;
-      torch.style.top = `${y}px`;
+    let currentLang = 'en';
+
+    function updateLang() {
+      document.querySelector('.lang-toggle').textContent = currentLang === 'en' ? '🌐 EN' : '🌐 RU';
+      Object.entries(translations[currentLang]).forEach(([key, val]) => {
+        const el = document.querySelector(`[data-lang="${key}"]`);
+        if (el) el.textContent = val;
+      });
+    }
+
+    document.addEventListener('mousemove', e => {
+      document.getElementById('light').style.setProperty('--x', `${e.clientX}px`);
+      document.getElementById('light').style.setProperty('--y', `${e.clientY}px`);
+      document.getElementById('torch').style.left = `${e.clientX}px`;
+      document.getElementById('torch').style.top = `${e.clientY}px`;
     });
 
-    btn.addEventListener('click', () => {
+    document.getElementById('start-btn').addEventListener('click', () => {
+      const video = document.getElementById('intro-video');
       video.volume = 1;
       video.play();
-      btn.style.display = 'none';
+      document.getElementById('start-btn').style.display = 'none';
     });
 
-    video.addEventListener('ended', () => {
-      container.style.display = 'none';
+    document.getElementById('intro-video').addEventListener('ended', () => {
+      document.getElementById('intro-container').style.display = 'none';
       setTimeout(() => {
         document.body.classList.add('hide-cursor');
         document.querySelector('.cursor-layers').style.display = 'block';
@@ -342,14 +323,10 @@ But in the darkest corners of the world, within the depths of broken sanctuaries
 
     function toggleLanguage() {
       currentLang = currentLang === 'en' ? 'ru' : 'en';
-      langToggle.textContent = currentLang === 'en' ? '🌐 EN' : '🌐 RU';
-
-      document.querySelector('[data-lang="tagline"]').textContent = translations[currentLang].tagline;
-      document.querySelector('[data-lang="welcome"]').textContent = translations[currentLang].welcome;
-      document.querySelector('[data-lang="about-title"]').textContent = translations[currentLang].aboutTitle;
-      document.querySelector('[data-lang="about-text"]').innerHTML = translations[currentLang].aboutText.replace(/\n/g, '<br><br>');
+      updateLang();
     }
-  </script>
 
+    updateLang();
+  </script>
 </body>
 </html>

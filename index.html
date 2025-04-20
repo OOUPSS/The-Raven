@@ -99,10 +99,24 @@
     .spotlight {
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255,255,200,0.1) 0%, rgba(0,0,0,0.95) 200px);
+      background: radial-gradient(
+        circle at var(--x, 50%) var(--y, 50%),
+        rgba(255, 220, 100, 0.25) 0%,
+        rgba(255, 150, 50, 0.05) 120px,
+        rgba(0, 0, 0, 0.95) 250px
+      );
       transition: background-position 0.05s ease;
+      animation: flicker 0.2s infinite alternate;
     }
-
+    
+    @keyframes flicker {
+      0% {
+        filter: brightness(1) blur(1px);
+       }
+       100% {
+       filter: brightness(1.2) blur(2px);
+      }
+    }
     #torch {
       position: fixed;
       width: 64px;

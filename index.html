@@ -157,6 +157,18 @@
       z-index: 4;
     }
 
+    section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6); /* Полупрозрачная тёмная подложка */
+      z-index: -1;
+      pointer-events: none;
+    }
+
     h2 {
       border-bottom: 1px solid #444;
       padding-bottom: 0.5rem;

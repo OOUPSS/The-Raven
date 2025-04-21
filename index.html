@@ -402,6 +402,17 @@
       torch.style.top = `${y}px`;
     });
 
+    document.addEventListener('touchmove', (e) => {
+      e.preventDefault();
+      const touch = e.touches[0];
+      const x = touch.clientX;
+      const y = touch.clientY;
+      spotlight.style.setProperty('--x', `${x}px`);
+      spotlight.style.setProperty('--y', `${y}px`);
+      torch.style.left = `${x}px`;
+      torch.style.top = `${y}px`;
+    });
+
     btn.addEventListener('click', () => {
       video.volume = 1;
       video.play();

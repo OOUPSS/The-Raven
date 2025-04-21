@@ -120,7 +120,7 @@
     }
     #torch {
       position: fixed;
-      width: 200px;
+      width: 400px;
       transform: translate(-50%, -50%);
       pointer-events: none;
       z-index: 10000;
@@ -344,7 +344,11 @@
   </footer>
 
   <div class="lang-toggle" onclick="toggleLanguage()">🌐 EN</div>
-
+  
+  <audio id="bg-music" loop>
+    <source src="https://raw.githubusercontent.com/OOUPSS/The-Raven/main/files/BymeMot%20-%20Better%20Destruction%20is%20under%20a%20Creative%20Commons%20license%20(CC%20BY%203.0).MP3" type="audio/mpeg">
+  </audio>
+  
   <script>
     const spotlight = document.getElementById('light');
     const torch = document.getElementById('torch');
@@ -352,6 +356,7 @@
     const btn = document.getElementById('start-btn');
     const container = document.getElementById('intro-container');
     const langToggle = document.querySelector('.lang-toggle');
+    const music = document.getElementById('bg-music');
 
     let currentLang = 'ru';
 
@@ -390,6 +395,7 @@
       setTimeout(() => {
         document.body.classList.add('hide-cursor');
         document.querySelector('.cursor-layers').style.display = 'block';
+        music.play();
       }, 100);
     });
 

@@ -46,6 +46,24 @@
       object-fit: cover;
     }
 
+    @media (max-width: 768px) {
+      #intro-video {
+        object-fit: contain;
+        background-color: black;
+      }
+      
+      #intro-container {
+        align-items: center;
+        justify-content: center;
+        display: flex;
+      }
+        
+      #start-btn {
+        font-size: 1.5rem;
+        padding: 0.8rem 1.6rem;
+      }
+    }
+
     #start-btn {
       position: absolute;
       top: 50%;

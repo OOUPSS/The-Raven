@@ -62,6 +62,19 @@
         font-size: 1.5rem;
         padding: 0.8rem 1.6rem;
       }
+      
+      .screenshots iframe {
+        width: 100%;
+        height: 200px;
+      }
+      
+      .tab-content {
+        padding: 0.5rem;
+      }
+      
+      .tab-buttons {
+        flex-direction: column;
+      }
     }
 
     #start-btn {
@@ -85,21 +98,29 @@
       background-color: rgba(0, 0, 0, 0.8);
     }
 
-    .lang-toggle {
+    .controls-container {
       position: fixed;
       top: 20px;
       right: 20px;
+      display: flex;
+      gap: 10px;
+      z-index: 10000;
+    }
+
+    .sound-toggle {
       background-color: #222;
       color: #fff;
       padding: 8px 12px;
       border-radius: 8px;
       font-size: 14px;
-      z-index: 10000;
       transition: background-color 0.3s;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .lang-toggle:hover {
+    .sound-toggle:hover {
       background-color: #444;
     }
 
@@ -120,9 +141,9 @@
       background: radial-gradient(
         circle at var(--x, 50%) var(--y, 50%),
         rgba(255, 200, 50, 0) 0px,
-        rgba(255, 160, 30, 0.07) 80px,
-        rgba(255, 100, 10, 0.1) 180px,
-        rgba(0, 0, 0, 0.95) 320px
+        rgba(255, 160, 30, 0.15) 150px,
+        rgba(255, 100, 10, 0.2) 300px,
+        rgba(0, 0, 0, 0.92) 550px
       );
       transition: background-position 0.05s ease;
       animation: flicker 0.2s infinite alternate;
@@ -138,7 +159,7 @@
     }
     #torch {
       position: fixed;
-      width: 250px;
+      width: 280px;
       transform: translate(-50%, -50%);
       pointer-events: none;
       z-index: 10000;
@@ -195,11 +216,13 @@
     section {
       max-width: 960px;
       margin: 2rem auto;
-      padding: 2rem 1rem;
-      background-color: #000;
+      padding: 1rem;
+      background-color: rgba(0, 0, 0, 0.7);
       position: relative;
       z-index: 4;
       border-radius: 8px;
+      backdrop-filter: blur(2px);
+      border: 1px solid rgba(255, 160, 30, 0.2);
     }
 
     section::before {
@@ -208,13 +231,17 @@
 
     h2 {
       font-size: 2.2rem;
-      border-bottom: 2.5px solid #444;
       padding-bottom: 0.5rem;
+      text-align: center;
+      margin-top: 0.5rem;
+      color: #f0e6d2;
+      text-shadow: 0 0 8px rgba(255, 160, 30, 0.5);
     }
 
     .screenshots {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       gap: 1rem;
       margin-top: 1rem;
       padding-bottom: 2rem;
@@ -222,14 +249,28 @@
       border-radius: 8px;
     }
 
-    .screenshots div {
-      background-color: #1e1e1e;
-      height: 135px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #888;
-      border: 1px dashed #444;
+    .screenshots iframe {
+      width: 100%;
+      max-width: 800px;
+      height: 450px;
+      border: none;
+      border-radius: 8px;
+    }
+
+    .yt-link {
+      display: inline-block;
+      background-color: #cc0000;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 10px;
+      transition: background-color 0.3s;
+    }
+
+    .yt-link:hover {
+      background-color: #ff0000;
     }
 
     footer {
@@ -240,6 +281,7 @@
       color: #777;
       position: relative;
       z-index: 4;
+      margin-top: 2rem;
     }
 
     p {
@@ -252,6 +294,107 @@
       line-height: 1.6;
       }
     
+    a {
+      color: #ffcc66; /* Новый цвет ссылок */
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    a:hover {
+      color: #ffaa00;
+      text-decoration: underline;
+    }
+    
+    /* Стили для табов */
+    .tab-container {
+      margin-top: 1.5rem;
+      border: 1px solid #444;
+      border-radius: 8px;
+      overflow: hidden;
+      background-color: rgba(15, 15, 15, 0.8);
+    }
+    
+    .tab-buttons {
+      display: flex;
+      background-color: #1a1a1a;
+    }
+    
+    .tab-button {
+      flex: 1;
+      padding: 12px 0;
+      background: none;
+      border: none;
+      color: #e0e0e0;
+      font-family: 'Triodion', serif;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .tab-button:hover {
+      background-color: #333;
+      color: #f0e6d2;
+    }
+    
+    .tab-button.active {
+      background-color: #333;
+      font-weight: bold;
+      position: relative;
+      color: #f0e6d2;
+    }
+    
+    .tab-button.active:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: #f0e6d2;
+      box-shadow: 0 0 8px rgba(255, 160, 30, 0.7);
+    }
+    
+    .tab-content {
+      padding: 1.5rem;
+    }
+    
+    .tab-pane {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    .tab-pane.active {
+      display: block;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #f0e6d2;
+      text-shadow: 0 0 8px rgba(255, 160, 30, 0.5);
+      font-size: 2.2rem;
+    }
+    
+    .content-block {
+      background-color: rgba(20, 20, 20, 0.6);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+      border: 1px solid rgba(255, 160, 30, 0.2);
+    }
+    
+    .section-title-tab {
+      display: none;
+    }
+    
+    .section-title-tab.active {
+      display: block;
+    }
   </style>
 </head>
 <body>
@@ -274,94 +417,294 @@
 
   <header>
     <h1>The Raven</h1>
-    <p class="tagline" data-lang="tagline">"In the darkness of the past lies something that should have never been found."</p>
+    <p class="tagline">"In the darkness of the past lies something that should have never been found."</p>
     <div class="badges">
-      <img src="https://img.shields.io/badge/status-in_development-orange" alt="status">
-      <img src="https://img.shields.io/badge/license-CC_BY--NC_4.0-blue" alt="license">
-      <img src="https://img.shields.io/badge/engine-Ren%27Py-green" alt="engine">
+      <img src="https://img.shields.io/badge/status-stopped-red" alt="status">
+      <img src="https://img.shields.io/badge/license-CC_BY--NC_4.0-green" alt="license">
+      <img src="https://img.shields.io/badge/engine-Video_Ren%27Py-green" alt="engine">
     </div>
   </header>
 
   <section>
-    <h2 data-lang="about-title">About the Project</h2>
-    <p data-lang="about-text">
-      Шёл 303-й год Эры Исчезновения Магии на планете Корвус. Когда-то магия была неотъемлемой частью жизни.
-      Она текла в венах этого мира, поддерживая его гармонию и развивая всё вокруг. Великие маги правили,
-      чудеса были повседневными, а древние заклинания оставляли следы в каждом уголке Корвуса.
-      Но с течением времени, магия стала исчезать. Поначалу это было незаметно: небольшие помехи,
-      ослабление мощных заклинаний, исчезновение редких существ. Затем исчезли и сами маги,
-      а могущественные артефакты начали тускнеть и терять силу.
-      Теперь магия стала лишь мифом. Все забыли, как она выглядела, как её использовали и что с ней произошло.
-      Лишь немногие сохранили отголоски её силы, но и эти воспоминания уже начинают тускнеть.
-      Те, кто решаются искать ответы, блуждают в подземельях древних храмов, где тьма поглотила даже самые старые следы.
-      Но в самых тёмных уголках мира, в глубинах разрушенных святилищ, скрыто нечто, что может вернуть магию — или стать её последним,
-      разрушительным всплеском, способным навсегда изменить судьбу мира.
-    </p>
-  </section>
-
-  <section>
-    <h2>Скриншоты / Screenshots</h2>
-    <div class="screenshots">
-      <div>Scene Placeholder 1</div>
-      <div>Scene Placeholder 2</div>
-      <div>Scene Placeholder 3</div>
+    <div class="section-title">
+      <div class="section-title-tab active" id="about-title-ru">О проекте</div>
+      <div class="section-title-tab" id="about-title-en">About the Project</div>
+    </div>
+    
+    <div class="tab-container">
+      <div class="tab-buttons">
+        <button class="tab-button active" onclick="openTab(this, 'about-ru', 'about-title-ru', 'about-title-en')">Русский</button>
+        <button class="tab-button" onclick="openTab(this, 'about-en', 'about-title-ru', 'about-title-en')">English</button>
+      </div>
+      
+      <div class="tab-content">
+        <div id="about-ru" class="tab-pane active">
+          <div class="content-block">
+            <p>
+              Шёл 303-й год Эры Исчезновения Магии на планете Корвус. Когда-то магия была неотъемлемой частью жизни.
+              Она текла в венах этого мира, поддерживая его гармонию и развивая всё вокруг. Великие маги правили,
+              чудеса были повседневными, а древние заклинания оставляли следы в каждом уголке Корвуса.
+            </p>
+            <p>
+              Но с течением времени магия стала исчезать. Поначалу это было незаметно: небольшие помехи,
+              ослабление мощных заклинаний, исчезновение редких существ. Затем исчезли и сами маги,
+              а могущественные артефакты начали тускнеть и терять силу.
+            </p>
+            <p>
+              Теперь магия стала лишь мифом. Все забыли, как она выглядела, как её использовали и что с ней произошло.
+              Лишь немногие сохранили отголоски её силы, но и эти воспоминания уже начинают тускнеть.
+              Те, кто решаются искать ответы, блуждают в подземельях древних храмов, где тьма поглотила даже самые старые следы.
+            </p>
+            <p>
+              Но в самых тёмных уголках мира, в глубинах разрушенных святилищ, скрыто нечто, что может вернуть магию — 
+              или стать её последним, разрушительным всплеском, способным навсегда изменить судьбу мира.
+            </p>
+          </div>
+        </div>
+        
+        <div id="about-en" class="tab-pane">
+          <div class="content-block">
+            <p>
+              Year 303 of the Era of Magic's Disappearance. Magic once flowed through the veins of the world, 
+              shaping its harmony and progress. Powerful wizards ruled, miracles were common, 
+              and ancient spells left marks in every corner of Corvus.
+            </p>
+            <p>
+              But over time, magic began to fade. At first, it was barely noticeable: small disruptions, 
+              weakening powerful spells, and the disappearance of rare creatures. Then the wizards themselves vanished, 
+              and powerful artifacts began to fade and lose their power.
+            </p>
+            <p>
+              Now, magic has become a myth. No one remembers what it looked like, how it was used, 
+              or what happened to it. Only a few still carry the echoes of its power, 
+              but even these memories are beginning to fade. Those who dare to seek answers wander in the depths of ancient temples, 
+              where darkness has consumed even the oldest traces.
+            </p>
+            <p>
+              Yet, in the darkest corners of the world, in the ruins of destroyed sanctuaries, 
+              lies something that may either restore magic — or become its final, destructive burst, 
+              capable of changing the fate of the world forever.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <section>
-    <h2>🛠️ Технологии / Technologies</h2>
-    <ul>
-      <li>Ren'Py — движок визуальных новелл / visual novel engine</li>
-      <li>CapCut + AI — синематик сцены с озвучкой / cinematics & voiceover</li>
-      <li>GitHub Pages — демо и портфолио / (soon) demo & portfolio</li>
-    </ul>
+    <div class="section-title">
+      <div class="section-title-tab active" id="demo-title-ru">Демонстрация</div>
+      <div class="section-title-tab" id="demo-title-en">Demonstration</div>
+    </div>
+    <div class="screenshots">
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+              title="The Raven Gameplay Demo" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen>
+      </iframe>
+      <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="yt-link" target="_blank">
+        Watch on YouTube
+      </a>
+    </div>
   </section>
 
   <section>
-    <h2>🧾 Лицензия / License</h2>
-    <p>
-      Этот проект распространяется под лицензией <a href="https://creativecommons.org/licenses/by-nc/4.0" target="_blank">Creative Commons Attribution-NonCommercial 4.0 International</a>.<br>
-      Вы можете копировать, перерабатывать и распространять материалы в некоммерческих целях, при условии указания авторства.
-    </p>
-    <p>
-      This work is licensed under the <a href="https://creativecommons.org/licenses/by-nc/4.0" target="_blank">Creative Commons Attribution-NonCommercial 4.0 International License</a>.<br>
-      You may share and adapt the material for non-commercial purposes, with proper credit.
-    </p>
+    <div class="section-title">
+      <div class="section-title-tab active" id="tech-title-ru">Технологии</div>
+      <div class="section-title-tab" id="tech-title-en">Technologies</div>
+    </div>
+    
+    <div class="tab-container">
+      <div class="tab-buttons">
+        <button class="tab-button active" onclick="openTab(this, 'tech-ru', 'tech-title-ru', 'tech-title-en')">Русский</button>
+        <button class="tab-button" onclick="openTab(this, 'tech-en', 'tech-title-ru', 'tech-title-en')">English</button>
+      </div>
+      
+      <div class="tab-content">
+        <div id="tech-ru" class="tab-pane active">
+          <div class="content-block">
+            <ul>
+              <li>Video Ren'Py — движок визуальных новелл</li>
+              <li>CapCut + AI — синематик сцены с озвучкой</li>
+              <li>GitHub Pages — демо и портфолио</li>
+              <li>Adobe Photoshop — создание артов и интерфейсов</li>
+              <li>FL Studio — звуковое оформление и музыка</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div id="tech-en" class="tab-pane">
+          <div class="content-block">
+            <ul>
+              <li>Video Ren'Py — visual novel engine</li>
+              <li>CapCut + AI — cinematics & voiceover</li>
+              <li>GitHub Pages — demo & portfolio</li>
+              <li>Adobe Photoshop — art and interface creation</li>
+              <li>FL Studio — sound design and music</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section>
-    <h2>📅 Дорожная карта / Roadmap</h2>
-    <ul>
-      <li>✅ Идея и концепт / Idea & concept</li>
-      <li>✅ Прототип / Prototype</li>
-      <li>🔄 Разработка демо-версии / Demo in progress</li>
-      <li>⏳ Озвучка и катсцены / Voiceover & cutscenes</li>
-      <li>🔜 Первый публичный билд / First public build (soon)</li>
-      <li>🌟 Публикация / Release</li>
-    </ul>
+    <div class="section-title">
+      <div class="section-title-tab active" id="license-title-ru">Лицензия</div>
+      <div class="section-title-tab" id="license-title-en">License</div>
+    </div>
+    
+    <div class="tab-container">
+      <div class="tab-buttons">
+        <button class="tab-button active" onclick="openTab(this, 'license-ru', 'license-title-ru', 'license-title-en')">Русский</button>
+        <button class="tab-button" onclick="openTab(this, 'license-en', 'license-title-ru', 'license-title-en')">English</button>
+      </div>
+      
+      <div class="tab-content">
+        <div id="license-ru" class="tab-pane active">
+          <div class="content-block">
+            <p>
+              Этот проект распространяется под лицензией <a href="https://creativecommons.org/licenses/by-nc/4.0" target="_blank">Creative Commons Attribution-NonCommercial 4.0 International</a>.
+            </p>
+            <p>
+              Вы можете копировать, перерабатывать и распространять материалы в некоммерческих целях, при условии указания авторства.
+              Запрещается использовать материалы проекта в коммерческих целях без специального разрешения.
+            </p>
+          </div>
+        </div>
+        
+        <div id="license-en" class="tab-pane">
+          <div class="content-block">
+            <p>
+              This work is licensed under the <a href="https://creativecommons.org/licenses/by-nc/4.0" target="_blank">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+            </p>
+            <p>
+              You may share and adapt the material for non-commercial purposes, with proper credit.
+              Commercial use of project materials is prohibited without special permission.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section>
-    <h2>🤝 Команда / Team</h2>
-    <ul>
-      <li>👤 Сценарий / Story: OOUPPSS</li>
-      <li>👤 Дизайн / Design: OOUPPSS</li>
-      <li>👤 Программирование / Code: OOUPPSS</li>
-      <li>👤 Арт и UI / Art & UI: OOUPPSS</li>
-    </ul>
+    <div class="section-title">
+      <div class="section-title-tab active" id="roadmap-title-ru">Дорожная карта</div>
+      <div class="section-title-tab" id="roadmap-title-en">Roadmap</div>
+    </div>
+    
+    <div class="tab-container">
+      <div class="tab-buttons">
+        <button class="tab-button active" onclick="openTab(this, 'roadmap-ru', 'roadmap-title-ru', 'roadmap-title-en')">Русский</button>
+        <button class="tab-button" onclick="openTab(this, 'roadmap-en', 'roadmap-title-ru', 'roadmap-title-en')">English</button>
+      </div>
+      
+      <div class="tab-content">
+        <div id="roadmap-ru" class="tab-pane active">
+          <div class="content-block">
+            <ul>
+              <li>✅ Идея и концепт</li>
+              <li>✅ Прототип</li>
+              <li>✅ Разработка демо-версии</li>
+              <li>✅ Озвучка и катсцены</li>
+              <li>✅ Тестирование и отладка</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div id="roadmap-en" class="tab-pane">
+          <div class="content-block">
+            <ul>
+              <li>✅ Idea & concept</li>
+              <li>✅ Prototype</li>
+              <li>✅ Demo development</li>
+              <li>✅ Voiceover & cutscenes</li>
+              <li>✅ Testing and debugging</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section>
-    <h2>📬 Контакты / Contacts</h2>
-    <p>📧 Email: dragoyar2005@gmail.com</p>
-    <p>📸 Instagram: <a href="https://instagram.com/oouuppss1" target="_blank">@oouuppss1</a></p>
+    <div class="section-title">
+      <div class="section-title-tab active" id="team-title-ru">Команда</div>
+      <div class="section-title-tab" id="team-title-en">Team</div>
+    </div>
+    
+    <div class="tab-container">
+      <div class="tab-buttons">
+        <button class="tab-button active" onclick="openTab(this, 'team-ru', 'team-title-ru', 'team-title-en')">Русский</button>
+        <button class="tab-button" onclick="openTab(this, 'team-en', 'team-title-ru', 'team-title-en')">English</button>
+      </div>
+      
+      <div class="tab-content">
+        <div id="team-ru" class="tab-pane active">
+          <div class="content-block">
+            <ul>
+              <li>👤 Сценарий: OOUPPSS</li>
+              <li>👤 Дизайн: OOUPPSS</li>
+              <li>👤 Программирование: OOUPPSS</li>
+              <li>👤 Арт и UI: OOUPPSS</li>
+              <li>👤 Звуковое оформление: OOUPPSS</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div id="team-en" class="tab-pane">
+          <div class="content-block">
+            <ul>
+              <li>👤 Story: OOUPPSS</li>
+              <li>👤 Design: OOUPPSS</li>
+              <li>👤 Code: OOUPPSS</li>
+              <li>👤 Art & UI: OOUPPSS</li>
+              <li>👤 Sound Design: OOUPPSS</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">
+      <div class="section-title-tab active" id="contacts-title-ru">Контакты</div>
+      <div class="section-title-tab" id="contacts-title-en">Contacts</div>
+    </div>
+    
+    <div class="tab-container">
+      <div class="tab-buttons">
+        <button class="tab-button active" onclick="openTab(this, 'contacts-ru', 'contacts-title-ru', 'contacts-title-en')">Русский</button>
+        <button class="tab-button" onclick="openTab(this, 'contacts-en', 'contacts-title-ru', 'contacts-title-en')">English</button>
+      </div>
+      
+      <div class="tab-content">
+        <div id="contacts-ru" class="tab-pane active">
+          <div class="content-block">
+            <p>📧 Email: dragoyar2005@gmail.com</p>
+            <p>📸 Instagram: <a href="https://instagram.com/oouuppss1" target="_blank">@oouuppss1</a></p>
+          </div>
+        </div>
+        
+        <div id="contacts-en" class="tab-pane">
+          <div class="content-block">
+            <p>📧 Email: dragoyar2005@gmail.com</p>
+            <p>📸 Instagram: <a href="https://instagram.com/oouuppss1" target="_blank">@oouuppss1</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <footer>
     &copy; All rights reserved. The Copchik is watching 👁
   </footer>
 
-  <div class="lang-toggle" onclick="toggleLanguage()">🌐 EN</div>
+  <div class="controls-container">
+    <div class="sound-toggle" onclick="toggleSound()">🔊</div>
+  </div>
   
   <audio id="bg-music" loop>
     <source src="https://raw.githubusercontent.com/OOUPSS/The-Raven/main/files/BymeMot%20-%20Better%20Destruction%20is%20under%20a%20Creative%20Commons%20license%20(CC%20BY%203.0).MP3" type="audio/mpeg">
@@ -373,25 +716,51 @@
     const video = document.getElementById('intro-video');
     const btn = document.getElementById('start-btn');
     const container = document.getElementById('intro-container');
-    const langToggle = document.querySelector('.lang-toggle');
+    const soundToggle = document.querySelector('.sound-toggle');
     const music = document.getElementById('bg-music');
+    const bgVideo = document.getElementById('background-video');
 
-    let currentLang = 'ru';
+    let isSoundOn = true;
+    let musicStarted = false;
 
-    const translations = {
-      en: {
-        welcome: "Click to Enter",
-        tagline: '"In the darkness of the past lies something that should have never been found."',
-        aboutTitle: "About the Project",
-        aboutText: "Year 303 of the Era of Magic's Disappearance. Magic once flowed through the veins of the world, shaping its harmony and progress. Powerful wizards ruled, miracles were common, and ancient spells left marks in every corner of Corvus. But over time, magic began to fade. At first, it was barely noticeable: small disruptions, weakening powerful spells, and the disappearance of rare creatures. Then the wizards themselves vanished, and powerful artifacts began to fade and lose their power. Now, magic has become a myth. No one remembers what it looked like, how it was used, or what happened to it. Only a few still carry the echoes of its power, but even these memories are beginning to fade. Those who dare to seek answers wander in the depths of ancient temples, where darkness has consumed even the oldest traces. Yet, in the darkest corners of the world, in the ruins of destroyed sanctuaries, lies something that may either restore magic — or become its final, destructive burst, capable of changing the fate of the world forever."
-      },
-      ru: {
-        welcome: "Нажмите, чтобы войти",
-        tagline: '"В темноте прошлого прячется то, что не должно было быть найдено."',
-        aboutTitle: "О проекте",
-        aboutText: "Шёл 303-й год Эры Исчезновения Магии на планете Корвус. Когда-то магия была неотъемлемой частью жизни. Она текла в венах этого мира, поддерживая его гармонию и развивая всё вокруг. Великие маги правили, чудеса были повседневными, а древние заклинания оставляли следы в каждом уголке Корвуса. Но с течением времени магия стала исчезать. Поначалу это было незаметно: небольшие помехи, ослабление мощных заклинаний, исчезновение редких существ. Затем исчезли и сами маги, а могущественные артефакты начали тускнеть и терять силу. Теперь магия стала лишь мифом. Все забыли, как она выглядела, как её использовали и что с ней произошло. Лишь немногие сохранили отголоски её силы, но и эти воспоминания уже начинают тускнеть. Те, кто решаются искать ответы, блуждают в подземельях древних храмов, где тьма поглотила даже самые старые следы. Но в самых тёмных уголках мира, в глубинах разрушенных святилищ, скрыто нечто, что может вернуть магию — или стать её последним, разрушительным всплеском, способным навсегда изменить судьбу мира."
+    // Функция для переключения табов
+    function openTab(btn, tabId, titleId1, titleId2) {
+      // Найти контейнер таба
+      const container = btn.closest('.tab-container');
+      
+      // Скрыть все табы в этом контейнере
+      const tabContents = container.querySelectorAll('.tab-pane');
+      tabContents.forEach(tab => tab.classList.remove('active'));
+      
+      // Убрать активный класс у всех кнопок в этом контейнере
+      const tabButtons = container.querySelectorAll('.tab-button');
+      tabButtons.forEach(btn => btn.classList.remove('active'));
+      
+      // Показать выбранный таб
+      document.getElementById(tabId).classList.add('active');
+      
+      // Сделать кнопку активной
+      btn.classList.add('active');
+      
+      // Обновить заголовок секции
+      const section = btn.closest('section');
+      const title1 = document.getElementById(titleId1);
+      const title2 = document.getElementById(titleId2);
+      
+      if (title1 && title2) {
+        if (btn.textContent.includes('Русский')) {
+          title1.classList.add('active');
+          title1.classList.remove('section-title-tab');
+          title2.classList.remove('active');
+          title2.classList.add('section-title-tab');
+        } else {
+          title2.classList.add('active');
+          title2.classList.remove('section-title-tab');
+          title1.classList.remove('active');
+          title1.classList.add('section-title-tab');
+        }
       }
-    };
+    }
 
     document.addEventListener('mousemove', (e) => {
       const x = e.clientX;
@@ -424,22 +793,45 @@
       setTimeout(() => {
         document.body.classList.add('hide-cursor');
         document.querySelector('.cursor-layers').style.display = 'block';
-        music.play();
+        musicStarted = true;
+        
+        // Применить текущее состояние звука после интро
+        if (isSoundOn) {
+          music.play();
+        }
       }, 100);
     });
 
-    function toggleLanguage() {
-      currentLang = currentLang === 'en' ? 'ru' : 'en';
-      langToggle.textContent = currentLang === 'en' ? '🌐 EN' : '🌐 RU';
-
-      document.querySelector('[data-lang="tagline"]').textContent = translations[currentLang].tagline;
-      document.querySelector('[data-lang="welcome"]').textContent = translations[currentLang].welcome;
-      document.querySelector('[data-lang="about-title"]').textContent = translations[currentLang].aboutTitle;
-      document.querySelector('[data-lang="about-text"]').textContent = translations[currentLang].aboutText;
+    function toggleSound() {
+      isSoundOn = !isSoundOn;
+      
+      if (isSoundOn) {
+        soundToggle.textContent = '🔊';
+        soundToggle.title = 'Sound On';
+        
+        // Если музыка уже была запущена - включить
+        if (musicStarted) {
+          music.play();
+        }
+      } else {
+        soundToggle.textContent = '🔇';
+        soundToggle.title = 'Sound Off';
+        
+        // Выключить музыку в любом случае
+        music.pause();
+      }
     }
-
     
-    toggleLanguage();
+    // Инициализация табов
+    document.querySelectorAll('.tab-button').forEach(btn => {
+      btn.addEventListener('click', function() {
+        // Получаем параметры из атрибута onclick
+        const params = this.getAttribute('onclick').match(/openTab\(this,\s*'([^']+)',\s*'([^']+)',\s*'([^']+)'\)/);
+        if (params) {
+          openTab(this, params[1], params[2], params[3]);
+        }
+      });
+    });
   </script>
 
 </body>

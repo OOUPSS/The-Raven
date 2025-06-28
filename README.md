@@ -39,9 +39,9 @@ One day, they will have to choose — and that choice will shape the fate of the
 
 ## 🎥 Демонстрация / Demonstration
 
-[![The Raven Gameplay Demo](https://github.com/OOUPSS/The-Raven/blob/main/files/The%20ravenp.png?raw=true)](https://www.youtube.com/watch?v=GChlI9eNX2I)
+[![The Raven Gameplay Demo](https://github.com/OOUPSS/The-Raven/blob/main/files/The%20ravenp.png?raw=true)](https://youtu.be/GChlI9eNX2I?si=wFXwWaGXsqK0L-9C)
 
-[Посмотреть на YouTube / Watch on YouTube](https://www.youtube.com/watch?v=GChlI9eNX2I)
+[Посмотреть на YouTube / Watch on YouTube](https://youtu.be/GChlI9eNX2I?si=wFXwWaGXsqK0L-9C)
 
 [Посетите сайт проекта / Visit project website](https://ooupss.github.io/The-Raven/)
 
